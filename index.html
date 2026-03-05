@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAKANAYA JAPON — Product List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:    #0e1f38;
+  --ocean:   #1a4a6b;
+  --teal:    #0a7d8c;
+  --gold:    #c8962a;
+  --gold-lt: #e8b84b;
+  --cream:   #f7f3ec;
+  --white:   #ffffff;
+  --gray:    #8a8a8a;
+  --light:   #f0ede7;
+  --dark:    #1a1a1a;
+  --red:     #c0392b;
+  --shadow:  0 4px 24px rgba(14,31,56,0.13);
+  --radius:  12px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Header ───────────────────────────────────────── */
+header {
+  background: var(--navy);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+.header-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 20px; height: 64px;
+}
+.logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.logo-icon {
+  font-size: 28px; line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(200,150,42,0.5));
+}
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600;
+  color: var(--white); letter-spacing: 0.08em;
+}
+.logo-sub {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 9px; font-weight: 300;
+  color: var(--gold-lt); letter-spacing: 0.2em;
+  display: block; text-transform: uppercase;
+}
+.header-right { display: flex; align-items: center; gap: 16px; }
+
+/* Language Toggle */
+.lang-toggle {
+  display: flex; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px; overflow: hidden;
+}
+.lang-btn {
+  background: none; border: none; cursor: pointer;
+  padding: 5px 12px; font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.5); transition: var(--transition);
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.05em;
+}
+.lang-btn.active {
+  background: var(--gold); color: var(--navy); font-weight: 700;
+}
+
+/* Cart Button */
+.cart-btn {
+  position: relative; background: var(--gold);
+  border: none; border-radius: 24px; cursor: pointer;
+  padding: 8px 18px; display: flex; align-items: center; gap: 8px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--navy);
+  transition: var(--transition); white-space: nowrap;
+}
+.cart-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
+.cart-count {
+  background: var(--red); color: white;
+  border-radius: 50%; width: 20px; height: 20px;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  display: none;
+}
+.cart-count.show { display: flex; }
+
+/* ── Hero Banner ──────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--ocean) 60%, var(--teal) 100%);
+  padding: 40px 20px 30px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-inner {
+  max-width: 1200px; margin: 0 auto;
+  position: relative;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 600; color: var(--white);
+  letter-spacing: 0.05em; line-height: 1.2;
+  margin-bottom: 6px;
+}
+.hero-title span { color: var(--gold-lt); }
+.hero-sub {
+  font-size: 12px; color: rgba(255,255,255,0.6);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-notice {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-left: 3px solid var(--gold);
+  border-radius: 8px; padding: 14px 18px;
+  max-width: 720px;
+}
+.hero-notice p {
+  font-size: 12px; line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+}
+.hero-notice p + p { margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
+.hero-notice a { color: var(--gold-lt); }
+.notice-label {
+  font-size: 10px; font-weight: 700;
+  color: var(--gold); letter-spacing: 0.1em;
+  display: block; margin-bottom: 4px;
+}
+
+/* ── Controls (Search + Filter) ──────────────────── */
+.controls {
+  background: var(--white);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: sticky; top: 64px; z-index: 90;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.controls-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 12px 20px;
+}
+
+/* Category Tabs */
+.cat-tabs {
+  display: flex; gap: 6px; overflow-x: auto;
+  padding-bottom: 10px; scrollbar-width: none;
+  margin-bottom: 10px;
+}
+.cat-tabs::-webkit-scrollbar { display: none; }
+.cat-tab {
+  background: none; border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 20px; cursor: pointer;
+  padding: 6px 14px; white-space: nowrap;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: var(--gray); transition: var(--transition);
+  display: flex; align-items: center; gap: 5px;
+}
+.cat-tab:hover { border-color: var(--teal); color: var(--teal); }
+.cat-tab.active {
+  background: var(--navy); border-color: var(--navy);
+  color: var(--white); font-weight: 700;
+}
+.cat-tab .cat-icon { font-size: 14px; }
+
+/* Search */
+.search-row { display: flex; gap: 10px; align-items: center; }
+.search-wrap {
+  flex: 1; position: relative; max-width: 400px;
+}
+.search-wrap svg {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gray);
+}
+.search-input {
+  width: 100%; border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 24px; padding: 8px 16px 8px 38px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px; color: var(--dark);
+  background: var(--light); outline: none;
+  transition: var(--transition);
+}
+.search-input:focus {
+  border-color: var(--teal);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(10,125,140,0.1);
+}
+.result-count {
+  font-size: 12px; color: var(--gray);
+  white-space: nowrap;
+}
+
+/* ── Product Grid ─────────────────────────────────── */
+.main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 120px; }
+
+.cat-section { margin-bottom: 40px; }
+.cat-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--navy);
+}
+.cat-header-icon { font-size: 22px; }
+.cat-header-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 20px; font-weight: 700; color: var(--navy);
+}
+.cat-header-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; color: var(--gray); font-style: italic;
+}
+.cat-count {
+  margin-left: auto; font-size: 12px; color: var(--gray);
+  background: var(--light); padding: 2px 10px; border-radius: 10px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* ── Product Card ─────────────────────────────────── */
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.06);
+  display: flex; flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(14,31,56,0.18);
+}
+.product-card.featured { border: 2px solid var(--gold); }
+
+.card-img {
+  width: 100%; aspect-ratio: 4/3;
+  object-fit: cover; display: block;
+  background: linear-gradient(135deg, #e8f4f8, #d0e8f0);
+}
+.card-img-placeholder {
+  width: 100%; aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--light), #dde8f0);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; opacity: 0.4;
+}
+.card-badge {
+  position: absolute; top: 10px; left: 10px;
+  background: var(--gold); color: var(--navy);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+  padding: 3px 8px; border-radius: 4px;
+}
+.card-img-wrap { position: relative; }
+
+.card-body { padding: 14px; flex: 1; display: flex; flex-direction: column; }
+.card-origin {
+  font-size: 10px; color: var(--teal);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 4px; font-weight: 500;
+}
+.card-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--navy); line-height: 1.4;
+  margin-bottom: 2px;
+}
+.card-name-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px; color: var(--gray);
+  font-style: italic; margin-bottom: 6px;
+  line-height: 1.3;
+}
+.card-desc {
+  font-size: 11px; color: var(--gray);
+  line-height: 1.6; margin-bottom: 8px;
+  flex: 1;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-spec {
+  font-size: 11px; color: var(--gray);
+  background: var(--light); padding: 4px 8px;
+  border-radius: 4px; margin-bottom: 10px;
+  display: inline-block;
+}
+.card-price-row {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; margin-bottom: 10px;
+}
+.card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: var(--navy);
+  line-height: 1;
+}
+.card-price span { font-size: 13px; color: var(--gray); }
+.card-note { font-size: 10px; color: var(--red); }
+
+/* Add to Cart control */
+.card-actions {
+  display: flex; align-items: center; gap: 8px;
+}
+.qty-ctrl {
+  display: flex; align-items: center;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 20px; overflow: hidden;
+}
+.qty-btn {
+  background: none; border: none; cursor: pointer;
+  width: 28px; height: 28px;
+  font-size: 16px; font-weight: 700;
+  color: var(--navy); transition: var(--transition);
+  display: flex; align-items: center; justify-content: center;
+}
+.qty-btn:hover { background: var(--light); }
+.qty-val {
+  width: 36px; text-align: center;
+  font-size: 13px; font-weight: 700;
+  color: var(--navy); border: none;
+  background: none; outline: none;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.add-btn {
+  flex: 1; background: var(--navy); color: var(--white);
+  border: none; border-radius: 20px; cursor: pointer;
+  padding: 8px 0; font-size: 12px; font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition: var(--transition); letter-spacing: 0.05em;
+}
+.add-btn:hover { background: var(--teal); }
+.add-btn.added { background: var(--teal); }
+
+/* No-price card */
+.no-price-note {
+  font-size: 10px; color: var(--gray); font-style: italic;
+  text-align: center; padding: 8px 0;
+  border-top: 1px solid var(--light);
+}
+
+/* ── Cart Drawer ──────────────────────────────────── */
+.cart-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200; opacity: 0;
+  pointer-events: none; transition: opacity var(--transition);
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+
+.cart-drawer {
+  position: fixed; right: 0; top: 0; bottom: 0;
+  width: min(480px, 100vw);
+  background: var(--white);
+  z-index: 201; display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform var(--transition);
+  box-shadow: -8px 0 40px rgba(0,0,0,0.2);
+}
+.cart-drawer.open { transform: translateX(0); }
+
+.cart-header {
+  background: var(--navy); padding: 20px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cart-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: var(--white);
+}
+.cart-close {
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.7); font-size: 24px;
+  transition: var(--transition);
+}
+.cart-close:hover { color: var(--white); }
+
+.cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+.cart-empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  height: 200px; color: var(--gray);
+  font-size: 14px; gap: 12px;
+}
+.cart-empty-icon { font-size: 48px; opacity: 0.3; }
+
+.cart-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 0; border-bottom: 1px solid var(--light);
+}
+.cart-item-info { flex: 1; }
+.cart-item-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px; font-weight: 700; color: var(--navy);
+  line-height: 1.3; margin-bottom: 3px;
+}
+.cart-item-detail { font-size: 11px; color: var(--gray); }
+.cart-item-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-weight: 600; color: var(--navy);
+  white-space: nowrap; text-align: right;
+}
+.cart-item-subtotal {
+  font-size: 11px; color: var(--gray); text-align: right;
+}
+.cart-item-remove {
+  background: none; border: none; cursor: pointer;
+  color: var(--gray); font-size: 18px;
+  padding: 0 4px; transition: var(--transition);
+}
+.cart-item-remove:hover { color: var(--red); }
+
+/* Cart Notes */
+.cart-notes { padding: 16px 24px; border-top: 1px solid var(--light); }
+.notes-label {
+  font-size: 12px; font-weight: 700; color: var(--navy);
+  margin-bottom: 6px; display: block;
+}
+.notes-input {
+  width: 100%; border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 8px; padding: 10px 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px; color: var(--dark);
+  resize: vertical; min-height: 60px; outline: none;
+}
+.notes-input:focus { border-color: var(--teal); }
+
+/* Cart Footer */
+.cart-footer { padding: 16px 24px; border-top: 2px solid var(--light); }
+.cart-total-row {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 6px;
+}
+.cart-total-label { font-size: 13px; color: var(--gray); }
+.cart-total-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 600; color: var(--navy);
+}
+.cart-excl { font-size: 10px; color: var(--gray); margin-bottom: 14px; }
+.order-btn {
+  width: 100%; background: var(--teal); color: var(--white);
+  border: none; border-radius: 12px; cursor: pointer;
+  padding: 16px; font-size: 15px; font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition: var(--transition); letter-spacing: 0.05em;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.order-btn:hover { background: var(--ocean); transform: translateY(-1px); }
+.order-btn:disabled { background: var(--gray); cursor: not-allowed; transform: none; }
+
+/* ── Float Cart Bar (mobile) ──────────────────────── */
+.float-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--navy); padding: 12px 20px;
+  display: none; align-items: center; justify-content: space-between;
+  z-index: 150; box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+}
+.float-bar.show { display: flex; }
+.float-bar-info { color: var(--white); }
+.float-bar-count { font-size: 12px; color: rgba(255,255,255,0.6); }
+.float-bar-total {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600; color: var(--gold-lt);
+}
+.float-bar-btn {
+  background: var(--gold); color: var(--navy);
+  border: none; border-radius: 24px; cursor: pointer;
+  padding: 10px 20px; font-size: 13px; font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* ── Modal (Product Detail) ───────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  z-index: 300; opacity: 0;
+  pointer-events: none; transition: opacity var(--transition);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--white); border-radius: 16px;
+  width: 100%; max-width: 560px;
+  max-height: 90vh; overflow-y: auto;
+  transform: scale(0.95) translateY(10px);
+  transition: transform var(--transition);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+}
+.modal-overlay.open .modal { transform: scale(1) translateY(0); }
+.modal-img {
+  width: 100%; aspect-ratio: 16/9;
+  object-fit: cover; border-radius: 16px 16px 0 0;
+}
+.modal-img-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--light), #dde8f0);
+  border-radius: 16px 16px 0 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px; opacity: 0.3;
+}
+.modal-body { padding: 24px; }
+.modal-origin { font-size: 11px; color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+.modal-name { font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.modal-name-en { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--gray); font-style: italic; margin-bottom: 16px; }
+.modal-desc { font-size: 13px; line-height: 1.8; color: #444; margin-bottom: 16px; }
+.modal-spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+.modal-spec-item { background: var(--light); border-radius: 8px; padding: 10px 12px; }
+.modal-spec-label { font-size: 10px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
+.modal-spec-value { font-size: 14px; font-weight: 700; color: var(--navy); }
+.modal-price-section { background: var(--navy); border-radius: 12px; padding: 18px; margin-bottom: 20px; }
+.modal-price-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+.modal-price { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--gold-lt); }
+.modal-price span { font-size: 16px; color: rgba(255,255,255,0.6); }
+.modal-note-text { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+.modal-qty-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.modal-qty-label { font-size: 13px; font-weight: 700; color: var(--navy); }
+.modal-qty-ctrl { display: flex; align-items: center; border: 2px solid var(--navy); border-radius: 24px; overflow: hidden; }
+.modal-qty-btn { background: none; border: none; cursor: pointer; width: 36px; height: 36px; font-size: 20px; font-weight: 700; color: var(--navy); transition: var(--transition); display: flex; align-items: center; justify-content: center; }
+.modal-qty-btn:hover { background: var(--light); }
+.modal-qty-val { width: 48px; text-align: center; font-size: 16px; font-weight: 700; color: var(--navy); border: none; background: none; outline: none; font-family: 'Noto Sans JP', sans-serif; }
+.modal-add-btn { width: 100%; background: var(--navy); color: var(--white); border: none; border-radius: 12px; cursor: pointer; padding: 14px; font-size: 14px; font-weight: 700; font-family: 'Noto Sans JP', sans-serif; transition: var(--transition); letter-spacing: 0.05em; }
+.modal-add-btn:hover { background: var(--teal); }
+.modal-close { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; color: white; font-size: 18px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+.modal-img-wrap { position: relative; }
+
+/* ── Toast ────────────────────────────────────────── */
+.toast {
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--teal); color: white;
+  padding: 10px 20px; border-radius: 24px;
+  font-size: 13px; font-weight: 700;
+  z-index: 400; opacity: 0; transition: all 0.3s;
+  pointer-events: none; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Loading Skeleton ─────────────────────────────── */
+.skeleton { animation: shimmer 1.5s infinite linear; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; border-radius: 8px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .header-inner { padding: 0 14px; }
+  .logo-text { font-size: 16px; }
+  .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .card-name { font-size: 13px; }
+  .card-price { font-size: 18px; }
+  .main { padding: 16px 14px 100px; }
+  .float-bar { display: flex; }
+  .cart-btn { display: none; }
+}
+@media (min-width: 641px) {
+  .float-bar { display: none !important; }
+}
+
+/* ── Utilities ────────────────────────────────────── */
+.hidden { display: none !important; }
+.price-na { color: var(--gray); font-size: 12px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <span class="logo-icon">🐟</span>
+      <div>
+        <span class="logo-text">SAKANAYA JAPON</span>
+        <span class="logo-sub" data-ja="鮮魚・海産物 商品リスト" data-en="Fresh Fish & Seafood Product List">鮮魚・海産物 商品リスト</span>
+      </div>
+    </a>
+    <div class="header-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnJA" onclick="setLang('ja')">JP</button>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="cart-btn" onclick="openCart()">
+        🛒 <span data-ja="カート" data-en="Cart">カート</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title"><span>SAKANAYA</span> JAPON</h1>
+    <p class="hero-sub">Product List — 商品リスト</p>
+    <div class="hero-notice">
+      <p id="noticeJA">
+        <span class="notice-label">JP ご注意</span>
+        ・地魚の鮮魚に関しては、㎏表示はフィレでのご提供価格となります。<br>
+        ・仕入状況により、品物が変わる場合がございます。恐れ入りますがご了承ください。<br>
+        ・記載にない輸入商品は <a href="https://t.me/+9MZ3SB5xav42YjZl" target="_blank">OFFICIAL TELEGRAM</a> でもご案内しております。<br>
+        ・合計金額を計算してTelegramでご注文いただけます。配送料は別途となります。
+      </p>
+      <p id="noticeEN" class="hidden">
+        <span class="notice-label">EN NOTICE</span>
+        · For local fresh fish, the price shown per kg is for fillet.<br>
+        · Due to supply conditions, the available products may vary. We apologize for any inconvenience.<br>
+        · Imported items not listed are also available on <a href="https://t.me/+9MZ3SB5xav42YjZl" target="_blank">OFFICIAL TELEGRAM</a>.<br>
+        · Simulate the total and order via Telegram. Delivery fee is not included.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── Controls ── -->
+<div class="controls">
+  <div class="controls-inner">
+    <div class="cat-tabs" id="catTabs"></div>
+    <div class="search-row">
+      <div class="search-wrap">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="search-input" id="searchInput" type="text"
+          data-placeholder-ja="商品名・産地で検索..."
+          data-placeholder-en="Search product name or origin..."
+          placeholder="商品名・産地で検索...">
+      </div>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Main ── -->
+<main class="main" id="productList"></main>
+
+<!-- ── Float Bar ── -->
+<div class="float-bar" id="floatBar" onclick="openCart()">
+  <div class="float-bar-info">
+    <div class="float-bar-count" id="floatCount"></div>
+    <div class="float-bar-total" id="floatTotal"></div>
+  </div>
+  <button class="float-bar-btn" data-ja="カートを見る" data-en="View Cart">カートを見る</button>
+</div>
+
+<!-- ── Cart Overlay ── -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <span class="cart-title" data-ja="🛒 注文カート" data-en="🛒 Order Cart">🛒 注文カート</span>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-notes">
+    <label class="notes-label" data-ja="📝 備考・ご要望" data-en="📝 Notes / Special Requests">📝 備考・ご要望</label>
+    <textarea class="notes-input" id="cartNotes"
+      data-placeholder-ja="配達希望日時・カット指定など..."
+      data-placeholder-en="Preferred delivery date/time, cut requests, etc..."
+      placeholder="配達希望日時・カット指定など..."></textarea>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span class="cart-total-label" data-ja="合計金額" data-en="Total">合計金額</span>
+      <span class="cart-total-amount" id="cartTotal">$0.00</span>
+    </div>
+    <p class="cart-excl" data-ja="※ 配送料は別途となります" data-en="* Delivery fee not included">※ 配送料は別途となります</p>
+    <button class="order-btn" id="orderBtn" onclick="sendToTelegram()" disabled>
+      <span>✈️</span>
+      <span data-ja="Telegramで注文する" data-en="Order via Telegram">Telegramで注文する</span>
+    </button>
+  </div>
+</div>
+
+<!-- ── Product Modal ── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-img-wrap">
+      <div class="modal-img-placeholder" id="modalImgPlaceholder">🐟</div>
+      <img class="modal-img hidden" id="modalImg" alt="">
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-origin" id="modalOrigin"></div>
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-name-en" id="modalNameEn"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-spec-grid" id="modalSpecs"></div>
+      <div class="modal-price-section" id="modalPriceSection">
+        <div class="modal-price-label" id="modalPriceLabel"></div>
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="modal-note-text" id="modalNoteText"></div>
+      </div>
+      <div class="modal-qty-row" id="modalQtyRow">
+        <span class="modal-qty-label" data-ja="数量:" data-en="Qty:">数量:</span>
+        <div class="modal-qty-ctrl">
+          <button class="modal-qty-btn" onclick="modalQtyChange(-1)">−</button>
+          <input class="modal-qty-val" id="modalQtyVal" type="number" value="1" min="0.5" step="0.5">
+          <button class="modal-qty-btn" onclick="modalQtyChange(1)">＋</button>
+        </div>
+        <span id="modalUnit" style="font-size:12px;color:var(--gray)"></span>
+      </div>
+      <button class="modal-add-btn" id="modalAddBtn" onclick="addFromModal()">
+        <span data-ja="🛒 カートに追加" data-en="🛒 Add to Cart">🛒 カートに追加</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Toast ── -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════
+// DATA — Product Database
+// ══════════════════════════════════════════════════
+const PRODUCTS = [
+  // ── 本日のおすすめ ───────────────────────────────
+  {
+    id: "FEAT-001", category: "featured",
+    name_ja: "愛媛県産養殖生本まぐろ 腹上 UA（大トロ）",
+    name_en: "Farmed Bluefin Tuna - Upper Abdomen UA (Otoro)",
+    origin: "愛媛 / Ehime", size: "70kgサイズ / 3-4kg個体",
+    desc_ja: "最高級部位の大トロ。愛媛県産養殖生本まぐろ。とろける脂が絶品です。",
+    desc_en: "Premium otoro section from farmed bluefin tuna. Ehime, Japan. Rich, melt-in-your-mouth texture.",
+    price: 102.86, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "3kg以下カット+$5", note_en: "Cut charge +$5 for under 3kg",
+    featured: true, icon: "🐟", supplier: "SUP-001"
+  },
+  {
+    id: "FEAT-002", category: "featured",
+    name_ja: "天然雲丹 泰匠物産・艶然（ロシア産赤上）",
+    name_en: "Wild Sea Urchin - Taisho / Russian Red Grade",
+    origin: "ロシア / Russia", size: "250g",
+    desc_ja: "ロシア産赤上並びの最高グレード雲丹。泰匠物産・艶然ブランド。",
+    desc_en: "Premium Russian Red grade sea urchin. Taisho brand.",
+    price: 159.46, unit: "pack", min: 1, step: 1,
+    note_ja: "仕入状況により変動", note_en: "Subject to supply conditions",
+    featured: true, icon: "🦔", supplier: "SUP-003"
+  },
+  {
+    id: "FEAT-003", category: "featured",
+    name_ja: "朝〆養殖カンパチ（鹿児島）",
+    name_en: "Farmed Amberjack - Morning Kill (Kagoshima)",
+    origin: "鹿児島 / Kagoshima", size: "2-3kg前後",
+    desc_ja: "鹿児島産の朝〆養殖カンパチ。新鮮さが命の逸品。",
+    desc_en: "Morning-kill farmed amberjack from Kagoshima. Exceptional freshness.",
+    price: 42.12, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "朝〆", note_en: "Morning Kill",
+    featured: true, icon: "🐠", supplier: "SUP-001"
+  },
+
+  // ── マグロ ───────────────────────────────────────
+  {
+    id: "TUNA-001", category: "tuna",
+    name_ja: "愛媛県産養殖生本まぐろ 背上 UB",
+    name_en: "Farmed Bluefin Tuna - Upper Back (UB)",
+    origin: "愛媛 / Ehime", size: "70kgサイズ / 3-4kg個体",
+    desc_ja: "愛媛県産養殖生本まぐろの背上部位。サイズ約3-4kg、目方前後あります。",
+    desc_en: "Upper back section of farmed bluefin tuna from Ehime, Japan. Approx 3-4kg size.",
+    price: 62.93, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "3kg以下カット+$5", note_en: "Cut charge +$5 for under 3kg",
+    featured: false, icon: "🐟", supplier: "SUP-001"
+  },
+  {
+    id: "TUNA-002", category: "tuna",
+    name_ja: "愛媛県産養殖生本まぐろ 背中 MB",
+    name_en: "Farmed Bluefin Tuna - Middle Back (MB)",
+    origin: "愛媛 / Ehime", size: "70kgサイズ / 3-4kg個体",
+    desc_ja: "背中部位の中程度脂乗りのまぐろ。バランスの良い赤身と脂。",
+    desc_en: "Middle back section with moderate fat content. Well-balanced flavor.",
+    price: 86.36, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "3kg以下カット+$5", note_en: "Cut charge +$5 for under 3kg",
+    featured: false, icon: "🐟", supplier: "SUP-001"
+  },
+  {
+    id: "TUNA-003", category: "tuna",
+    name_ja: "愛媛県産養殖生本まぐろ 背下 BB",
+    name_en: "Farmed Bluefin Tuna - Bottom Back (BB)",
+    origin: "愛媛 / Ehime", size: "70kgサイズ / 3-4kg個体",
+    desc_ja: "背下部位。赤身寄りの部位で旨味が凝縮。",
+    desc_en: "Bottom back section. Lean with concentrated umami flavor.",
+    price: 62.06, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "3kg以下カット+$5", note_en: "Cut charge +$5 for under 3kg",
+    featured: false, icon: "🐟", supplier: "SUP-001"
+  },
+  {
+    id: "TUNA-004", category: "tuna",
+    name_ja: "愛媛県産養殖生本まぐろ 腹上 UA（大トロ）",
+    name_en: "Farmed Bluefin Tuna - Upper Abdomen UA (Otoro)",
+    origin: "愛媛 / Ehime", size: "70kgサイズ / 3-4kg個体",
+    desc_ja: "大トロ部位。最高峰の脂乗りと甘み。とろける食感が絶品。",
+    desc_en: "Otoro section. The pinnacle of fat content and sweetness. Melts on the tongue.",
+    price: 102.86, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "3kg以下カット+$5", note_en: "Cut charge +$5 for under 3kg",
+    featured: false, icon: "🐟", supplier: "SUP-001"
+  },
+  {
+    id: "TUNA-005", category: "tuna",
+    name_ja: "愛媛県産養殖生本まぐろ 腹中 MA（中トロ）",
+    name_en: "Farmed Bluefin Tuna - Middle Abdomen MA (Chutoro)",
+    origin: "愛媛 / Ehime", size: "70kgサイズ / 3-4kg個体",
+    desc_ja: "中トロ部位。赤身と脂の黄金バランス。人気No.1部位。",
+    desc_en: "Chutoro section. Perfect balance of lean and fat. Most popular cut.",
+    price: 86.36, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "3kg以下カット+$5", note_en: "Cut charge +$5 for under 3kg",
+    featured: false, icon: "🐟", supplier: "SUP-001"
+  },
+  {
+    id: "TUNA-006", category: "tuna",
+    name_ja: "愛媛県産養殖生本まぐろ 腹下 BA",
+    name_en: "Farmed Bluefin Tuna - Bottom Abdomen BA",
+    origin: "愛媛 / Ehime", size: "70kgサイズ / 3-4kg個体",
+    desc_ja: "腹下部位。脂と旨みのバランスが良い人気部位。",
+    desc_en: "Bottom abdomen section. Popular cut with excellent fat and umami balance.",
+    price: 62.93, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "3kg以下カット+$5", note_en: "Cut charge +$5 for under 3kg",
+    featured: false, icon: "🐟", supplier: "SUP-001"
+  },
+
+  // ── 雲丹 ─────────────────────────────────────────
+  {
+    id: "UNI-S01", category: "uni",
+    name_ja: "雲丹 泰匠物産・艶然（ロシア産赤上並び）",
+    name_en: "Uni - Taisho Enzen / Russian Red Grade",
+    origin: "ロシア / Russia", size: "250g / pack",
+    desc_ja: "ロシア産赤上並びの最高グレード。泰匠物産・艶然ブランドの厳選雲丹。",
+    desc_en: "Top grade Russian Red uni. Taisho Enzen brand. Premium selection.",
+    price: 159.46, unit: "pack", min: 1, step: 1,
+    note_ja: "仕入状況により変動あり", note_en: "Subject to supply conditions",
+    featured: false, icon: "🦔", supplier: "SUP-003"
+  },
+  {
+    id: "UNI-S02", category: "uni",
+    name_ja: "雲丹 倖永（ロシア）",
+    name_en: "Uni - Kouei / Russia",
+    origin: "ロシア / Russia", size: "250g / pack",
+    desc_ja: "倖永ブランドのロシア産雲丹。濃厚な甘みと磯の香り。",
+    desc_en: "Kouei brand Russian uni. Rich sweetness with ocean aroma.",
+    price: 168.14, unit: "pack", min: 1, step: 1,
+    note_ja: "仕入状況により変動あり", note_en: "Subject to supply conditions",
+    featured: false, icon: "🦔", supplier: "SUP-003"
+  },
+  {
+    id: "UNI-S03", category: "uni",
+    name_ja: "雲丹 竹内（ロシア産赤上並び）",
+    name_en: "Uni - Takeuchi / Russian Red",
+    origin: "ロシア / Russia", size: "250g / pack",
+    desc_ja: "竹内ブランドのロシア産赤上並び雲丹。",
+    desc_en: "Takeuchi brand Russian Red grade uni.",
+    price: 133.42, unit: "pack", min: 1, step: 1,
+    note_ja: "仕入状況により変動あり", note_en: "Subject to supply conditions",
+    featured: false, icon: "🦔", supplier: "SUP-003"
+  },
+  {
+    id: "UNI-S04", category: "uni",
+    name_ja: "雲丹 松浦（ロシア産黄色）",
+    name_en: "Uni - Matsuura / Russian Yellow",
+    origin: "ロシア / Russia", size: "250g / pack",
+    desc_ja: "松浦ブランドのロシア産黄色雲丹。まろやかな風味。",
+    desc_en: "Matsuura brand Russian Yellow uni. Mellow, smooth flavor.",
+    price: 133.42, unit: "pack", min: 1, step: 1,
+    note_ja: "仕入状況により変動あり", note_en: "Subject to supply conditions",
+    featured: false, icon: "🦔", supplier: "SUP-003"
+  },
+  {
+    id: "UNI-S07", category: "uni",
+    name_ja: "雲丹 マルカワ（ロシア産赤上並び）",
+    name_en: "Uni - Marukawa / Russian Red",
+    origin: "ロシア / Russia", size: "250g / pack",
+    desc_ja: "マルカワブランドのロシア産赤上並び雲丹。",
+    desc_en: "Marukawa brand Russian Red grade uni.",
+    price: 150.78, unit: "pack", min: 1, step: 1,
+    note_ja: "仕入状況により変動あり", note_en: "Subject to supply conditions",
+    featured: false, icon: "🦔", supplier: "SUP-003"
+  },
+  {
+    id: "UNI-S11", category: "uni",
+    name_ja: "雲丹 浜中小川（Bバラ）",
+    name_en: "Uni - Hamanaka Ogawa / B Grade Bara",
+    origin: "ロシア / Russia", size: "250g / pack",
+    desc_ja: "リーズナブルなBバラグレード。料理用にも最適。",
+    desc_en: "Value B grade bara uni. Great for cooking applications.",
+    price: 98.70, unit: "pack", min: 1, step: 1,
+    note_ja: "仕入状況により変動あり", note_en: "Subject to supply conditions",
+    featured: false, icon: "🦔", supplier: "SUP-003"
+  },
+  {
+    id: "UNI-S15", category: "uni",
+    name_ja: "雲丹 壱（カナダBARA）",
+    name_en: "Uni - Ichi / Canada Bara",
+    origin: "カナダ / Canada", size: "250g / pack",
+    desc_ja: "カナダ産のバラグレード雲丹。料理用途に最適。",
+    desc_en: "Canadian bara grade uni. Ideal for culinary use.",
+    price: 98.70, unit: "pack", min: 1, step: 1,
+    note_ja: "仕入状況により変動あり", note_en: "Subject to supply conditions",
+    featured: false, icon: "🦔", supplier: "SUP-003"
+  },
+
+  // ── 養殖 ─────────────────────────────────────────
+  {
+    id: "FARM-K01", category: "farmed",
+    name_ja: "朝〆養殖たい（愛媛）",
+    name_en: "Farmed Sea Bream - Morning Kill (Ehime)",
+    origin: "愛媛 / Ehime", size: "1.5kg前後",
+    desc_ja: "愛媛県産の養殖真鯛。朝〆で新鮮さ抜群。上品な白身と繊細な旨み。",
+    desc_en: "Farmed sea bream from Ehime. Morning-killed for peak freshness. Elegant white flesh.",
+    price: 31.70, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "朝〆", note_en: "Morning Kill",
+    featured: false, icon: "🐡", supplier: "SUP-001"
+  },
+  {
+    id: "FARM-K02", category: "farmed",
+    name_ja: "朝〆養殖カンパチ（鹿児島）",
+    name_en: "Farmed Amberjack - Morning Kill (Kagoshima)",
+    origin: "鹿児島 / Kagoshima", size: "2-3kg前後",
+    desc_ja: "鹿児島産の養殖カンパチ。朝〆で旨みが凝縮。コリッとした食感が自慢。",
+    desc_en: "Farmed amberjack from Kagoshima. Morning-killed. Firm texture with rich umami.",
+    price: 42.12, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "朝〆", note_en: "Morning Kill",
+    featured: false, icon: "🐠", supplier: "SUP-001"
+  },
+  {
+    id: "FARM-K03", category: "farmed",
+    name_ja: "養殖ブリ新物（鹿児島）",
+    name_en: "Farmed Yellowtail - New Season (Kagoshima)",
+    origin: "鹿児島 / Kagoshima", size: "3-4kg前後",
+    desc_ja: "鹿児島産の養殖ブリ新物。脂乗り抜群、照り焼き・刺身に最適。",
+    desc_en: "New season farmed yellowtail from Kagoshima. Excellent fat content. Perfect for teriyaki or sashimi.",
+    price: 37.34, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "新物", note_en: "New Season",
+    featured: false, icon: "🐟", supplier: "SUP-001"
+  },
+  {
+    id: "FARM-K04", category: "farmed",
+    name_ja: "朝〆養殖シマアジ（愛媛）",
+    name_en: "Farmed Striped Jack - Morning Kill (Ehime)",
+    origin: "愛媛 / Ehime", size: "0.9kg前後",
+    desc_ja: "愛媛県産養殖シマアジ。朝〆の新鮮なシマアジは絶品の旨み。",
+    desc_en: "Farmed striped jack from Ehime. Morning-killed for exceptional freshness and flavor.",
+    price: 48.19, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "朝〆", note_en: "Morning Kill",
+    featured: false, icon: "🐟", supplier: "SUP-001"
+  },
+  {
+    id: "FARM-K05", category: "farmed",
+    name_ja: "朝〆養殖平目（韓国）",
+    name_en: "Farmed Flounder - Morning Kill (Korea)",
+    origin: "韓国 / Korea", size: "1kg前後",
+    desc_ja: "韓国産養殖ヒラメ。朝〆で歯ごたえ抜群。薄造りに最適。",
+    desc_en: "Farmed flounder from Korea. Morning-killed. Excellent for thin-sliced sashimi.",
+    price: 51.64, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "朝〆", note_en: "Morning Kill",
+    featured: false, icon: "🐡", supplier: "SUP-001"
+  },
+
+  // ── 魚介類 ───────────────────────────────────────
+  {
+    id: "SEA-K75", category: "seafood",
+    name_ja: "あん肝（北海道噴火湾・中）",
+    name_en: "Monkfish Liver (Hokkaido Funka Bay, Medium)",
+    origin: "北海道 / Hokkaido", size: "1kg",
+    desc_ja: "北海道噴火湾産のあん肝。濃厚でクリーミーな味わい。海のフォアグラ。",
+    desc_en: "Monkfish liver from Hokkaido Funka Bay. Rich and creamy. Known as 'foie gras of the sea'.",
+    price: 153.20, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "", note_en: "",
+    featured: false, icon: "🫁", supplier: "SUP-002"
+  },
+  {
+    id: "SEA-K76", category: "seafood",
+    name_ja: "あん肝（青森・中大）",
+    name_en: "Monkfish Liver (Aomori, Med-Large)",
+    origin: "青森 / Aomori", size: "1kg",
+    desc_ja: "青森産の中大サイズあん肝。濃厚な旨みが特徴。",
+    desc_en: "Medium-large monkfish liver from Aomori. Intensely rich flavor.",
+    price: 83.76, unit: "kg", min: 0.5, step: 0.5,
+    note_ja: "", note_en: "",
+    featured: false, icon: "🫁", supplier: "SUP-002"
+  },
+  {
+    id: "SEA-K83", category: "seafood",
+    name_ja: "アカガイ（宮城）",
+    name_en: "Ark Shell (Miyagi)",
+    origin: "宮城 / Miyagi", size: "100/140g前後",
+    desc_ja: "宮城産の天然アカガイ。磯の香りと濃厚な旨みが絶品。",
+    desc_en: "Wild ark shell from Miyagi. Rich ocean flavor with distinctive aroma.",
+    price: 62.06, unit: "kg", min: 1, step: 1,
+    note_ja: "", note_en: "",
+    featured: false, icon: "🦪", supplier: "SUP-002"
+  },
+  {
+    id: "SEA-K88", category: "seafood",
+    name_ja: "サザエ（長崎）S",
+    name_en: "Turban Shell (Nagasaki, S)",
+    origin: "長崎 / Nagasaki", size: "100/130g前後",
+    desc_ja: "長崎産のサザエ。磯の香りが豊か。壺焼きに最適。",
+    desc_en: "Turban shell from Nagasaki. Rich oceanic flavor. Perfect for grilling in shell.",
+    price: 40.36, unit: "kg", min: 1, step: 1,
+    note_ja: "", note_en: "",
+    featured: false, icon: "🐚", supplier: "SUP-002"
+  },
+  {
+    id: "SEA-K93", category: "seafood",
+    name_ja: "ホッキガイ（根室）S",
+    name_en: "Surf Clam (Nemuro, S)",
+    origin: "根室 / Nemuro", size: "200/300g前後",
+    desc_ja: "北海道根室産のホッキガイ。甘みとコリコリの食感が魅力。",
+    desc_en: "Surf clam from Nemuro, Hokkaido. Sweet flavor with satisfying crunch.",
+    price: 33.42, unit: "kg", min: 1, step: 1,
+    note_ja: "", note_en: "",
+    featured: false, icon: "🦪", supplier: "SUP-002"
+  },
+  {
+    id: "SEA-P70", category: "seafood",
+    name_ja: "マダラ白子フレッシュパック（2特）",
+    name_en: "Pacific Cod Milt - Fresh Pack Grade 2",
+    origin: "国内 / Japan", size: "0.5kg / pack",
+    desc_ja: "新鮮なマダラの白子。2特グレードの上質品。とろける食感。",
+    desc_en: "Fresh Pacific cod milt. Grade 2 quality. Silky, melting texture.",
+    price: 43.03, unit: "pack", min: 1, step: 1,
+    note_ja: "", note_en: "",
+    featured: false, icon: "🫀", supplier: "SUP-002"
+  },
+
+  // ── 冷凍品 ───────────────────────────────────────
+  {
+    id: "FRZ-P51", category: "frozen",
+    name_ja: "冷凍鮭いくら（輸入）",
+    name_en: "Frozen Salmon Roe / Ikura (Imported)",
+    origin: "輸入 / Imported", size: "0.5kg前後 / pack",
+    desc_ja: "輸入物の冷凍鮭いくら。コストパフォーマンスに優れた一品。",
+    desc_en: "Imported frozen salmon roe. Excellent value.",
+    price: 73.18, unit: "pack", min: 1, step: 1,
+    note_ja: "", note_en: "",
+    featured: false, icon: "🫧", supplier: "SUP-004"
+  },
+  {
+    id: "FRZ-P52", category: "frozen",
+    name_ja: "冷凍新物鮭いくら（北海道 日高）",
+    name_en: "Frozen Salmon Roe - New Season (Hokkaido Hidaka)",
+    origin: "北海道 日高 / Hokkaido Hidaka", size: "0.5kg前後 / pack",
+    desc_ja: "北海道日高産の新物鮭いくら。粒が大きく、濃厚な旨みが自慢。",
+    desc_en: "New season salmon roe from Hokkaido Hidaka. Large grains with rich, full flavor.",
+    price: 113.62, unit: "pack", min: 1, step: 1,
+    note_ja: "新物", note_en: "New Season",
+    featured: false, icon: "🫧", supplier: "SUP-004"
+  },
+  {
+    id: "FRZ-P55", category: "frozen",
+    name_ja: "冷凍ボタンエビ 11-13入（ロシア）",
+    name_en: "Frozen Botan Shrimp / Spot Prawn (Russia)",
+    origin: "ロシア / Russia", size: "0.5kg / 11-13尾",
+    desc_ja: "ロシア産の冷凍ボタンエビ。甘みと濃厚な旨みが特徴。",
+    desc_en: "Frozen spot prawn from Russia. Sweet flavor with rich umami.",
+    price: 53.73, unit: "pack", min: 1, step: 1,
+    note_ja: "11-13尾入", note_en: "11-13 pcs",
+    featured: false, icon: "🦐", supplier: "SUP-004"
+  },
+  {
+    id: "FRZ-P57", category: "frozen",
+    name_ja: "冷凍甘エビ 61-67入（ロシア）",
+    name_en: "Frozen Sweet Shrimp / Amaebi (Russia)",
+    origin: "ロシア / Russia", size: "1kg / 61-67尾",
+    desc_ja: "ロシア産の冷凍甘エビ。たっぷり61-67尾入り。甘みが凝縮。",
+    desc_en: "Frozen sweet shrimp from Russia. 61-67 pcs packed. Concentrated sweetness.",
+    price: 55.32, unit: "pack", min: 1, step: 1,
+    note_ja: "61-67尾入", note_en: "61-67 pcs",
+    featured: false, icon: "🦐", supplier: "SUP-004"
+  },
+  {
+    id: "FRZ-P53", category: "frozen",
+    name_ja: "冷凍天然赤海老 L-2（輸入）",
+    name_en: "Frozen Wild Red Shrimp L-2 (Imported)",
+    origin: "輸入 / Imported", size: "2kg前後 / 20-30尾",
+    desc_ja: "輸入物の天然赤海老。L-2サイズの大粒。甘みと弾力が抜群。",
+    desc_en: "Imported wild red shrimp L-2 size. Large grains. Excellent sweetness and elasticity.",
+    price: 76.64, unit: "pack", min: 1, step: 1,
+    note_ja: "20-30尾入", note_en: "20-30 pcs",
+    featured: false, icon: "🦐", supplier: "SUP-004"
+  },
+  {
+    id: "FRZ-P56", category: "frozen",
+    name_ja: "冷凍煮穴子 5尾（250g）",
+    name_en: "Frozen Boiled Conger Eel (5 pcs, 250g)",
+    origin: "国内 / Japan", size: "0.25kg / 5尾",
+    desc_ja: "ふっくら柔らかい煮穴子。5尾入り。すぐに使えて便利。",
+    desc_en: "Tender boiled conger eel. 5 pieces. Ready to use, very convenient.",
+    price: 19.03, unit: "pack", min: 1, step: 1,
+    note_ja: "5尾入", note_en: "5 pcs",
+    featured: false, icon: "🐍", supplier: "SUP-004"
+  },
+  {
+    id: "FRZ-P99", category: "frozen",
+    name_ja: "細もずく（沖縄）",
+    name_en: "Mozuku Seaweed - Thin Type (Okinawa)",
+    origin: "沖縄 / Okinawa", size: "1kg / pack",
+    desc_ja: "沖縄産の細もずく。ぬめりと磯の香りが豊か。",
+    desc_en: "Thin mozuku seaweed from Okinawa. Rich in sliminess and ocean aroma.",
+    price: 29.51, unit: "pack", min: 1, step: 1,
+    note_ja: "", note_en: "",
+    featured: false, icon: "🌿", supplier: "SUP-004"
+  },
+];
+
+// ── Categories Config ────────────────────────────
+const CATEGORIES = [
+  { id: "all",     icon: "🌊", label_ja: "すべて",       label_en: "All" },
+  { id: "featured",icon: "⭐", label_ja: "本日のおすすめ", label_en: "Today's Special" },
+  { id: "tuna",    icon: "🐟", label_ja: "マグロ",        label_en: "Tuna" },
+  { id: "uni",     icon: "🦔", label_ja: "雲丹",          label_en: "Sea Urchin" },
+  { id: "farmed",  icon: "🐠", label_ja: "養殖",          label_en: "Farmed" },
+  { id: "seafood", icon: "🦞", label_ja: "魚介類",         label_en: "Seafood" },
+  { id: "frozen",  icon: "❄️", label_ja: "冷凍品",        label_en: "Frozen" },
+];
+
+// ══════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════
+let lang = 'ja';
+let currentCat = 'all';
+let searchQuery = '';
+let cart = {};
+let currentProduct = null;
+
+// ══════════════════════════════════════════════════
+// LANGUAGE
+// ══════════════════════════════════════════════════
+function setLang(l) {
+  lang = l;
+  document.getElementById('btnJA').classList.toggle('active', l === 'ja');
+  document.getElementById('btnEN').classList.toggle('active', l === 'en');
+
+  // Update all data-ja / data-en elements
+  document.querySelectorAll('[data-ja]').forEach(el => {
+    el.textContent = l === 'ja' ? el.dataset.ja : el.dataset.en;
+  });
+  // Placeholders
+  document.querySelectorAll('[data-placeholder-ja]').forEach(el => {
+    el.placeholder = l === 'ja' ? el.dataset.placeholderJa : el.dataset.placeholderEn;
+  });
+  // Notice
+  document.getElementById('noticeJA').classList.toggle('hidden', l !== 'ja');
+  document.getElementById('noticeEN').classList.toggle('hidden', l !== 'en');
+
+  renderCategoryTabs();
+  renderProducts();
+  renderCart();
+}
+
+// ══════════════════════════════════════════════════
+// RENDER CATEGORY TABS
+// ══════════════════════════════════════════════════
+function renderCategoryTabs() {
+  const wrap = document.getElementById('catTabs');
+  wrap.innerHTML = CATEGORIES.map(cat => {
+    const count = cat.id === 'all' ? PRODUCTS.length
+      : PRODUCTS.filter(p => p.category === cat.id).length;
+    const label = lang === 'ja' ? cat.label_ja : cat.label_en;
+    return `<button class="cat-tab${currentCat === cat.id ? ' active' : ''}"
+      onclick="selectCat('${cat.id}')">
+      <span class="cat-icon">${cat.icon}</span>${label}
+      <span style="opacity:0.6;font-size:10px">(${count})</span>
+    </button>`;
+  }).join('');
+}
+
+function selectCat(id) {
+  currentCat = id;
+  renderCategoryTabs();
+  renderProducts();
+}
+
+// ══════════════════════════════════════════════════
+// RENDER PRODUCTS
+// ══════════════════════════════════════════════════
+function getFiltered() {
+  return PRODUCTS.filter(p => {
+    const inCat = currentCat === 'all' || p.category === currentCat;
+    const q = searchQuery.toLowerCase();
+    const inSearch = !q ||
+      p.name_ja.toLowerCase().includes(q) ||
+      p.name_en.toLowerCase().includes(q) ||
+      p.origin.toLowerCase().includes(q) ||
+      (p.desc_ja || '').toLowerCase().includes(q);
+    return inCat && inSearch;
+  });
+}
+
+function renderProducts() {
+  const filtered = getFiltered();
+  const main = document.getElementById('productList');
+  document.getElementById('resultCount').textContent =
+    lang === 'ja' ? `${filtered.length}件` : `${filtered.length} items`;
+
+  if (filtered.length === 0) {
+    main.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--gray)">
+      <div style="font-size:48px;margin-bottom:12px">🔍</div>
+      <p>${lang === 'ja' ? '該当する商品が見つかりませんでした' : 'No products found'}</p>
+    </div>`;
+    return;
+  }
+
+  // Group by category
+  const toShow = currentCat !== 'all'
+    ? [{ cat: CATEGORIES.find(c => c.id === currentCat), products: filtered }]
+    : CATEGORIES.filter(c => c.id !== 'all').map(cat => ({
+        cat, products: filtered.filter(p => p.category === cat.id)
+      })).filter(g => g.products.length > 0);
+
+  main.innerHTML = toShow.map(({ cat, products }) => `
+    <div class="cat-section">
+      <div class="cat-header">
+        <span class="cat-header-icon">${cat.icon}</span>
+        <span class="cat-header-name">${lang === 'ja' ? cat.label_ja : cat.label_en}</span>
+        <span class="cat-header-en">${lang === 'ja' ? cat.label_en : cat.label_ja}</span>
+        <span class="cat-count">${products.length} ${lang === 'ja' ? '品' : 'items'}</span>
+      </div>
+      <div class="product-grid">
+        ${products.map(p => renderCard(p)).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderCard(p) {
+  const inCart = cart[p.id];
+  const qty = inCart ? inCart.qty : p.min;
+  const name = lang === 'ja' ? p.name_ja : p.name_en;
+  const desc = lang === 'ja' ? p.desc_ja : p.desc_en;
+  const note = lang === 'ja' ? p.note_ja : p.note_en;
+  const unitLabel = p.unit === 'kg' ? '/kg' : `/${p.unit}`;
+
+  return `
+  <div class="product-card${p.featured ? ' featured' : ''}" onclick="openModal('${p.id}')">
+    <div class="card-img-wrap">
+      ${p.image_url
+        ? `<img class="card-img" src="${p.image_url}" alt="${name}" loading="lazy">`
+        : `<div class="card-img-placeholder">${p.icon}</div>`}
+      ${p.featured ? `<span class="card-badge">${lang === 'ja' ? '⭐ おすすめ' : '⭐ Special'}</span>` : ''}
+    </div>
+    <div class="card-body">
+      <div class="card-origin">${p.origin}</div>
+      <div class="card-name">${name}</div>
+      <div class="card-name-en">${lang === 'ja' ? p.name_en : p.name_ja}</div>
+      <div class="card-desc">${desc}</div>
+      ${p.size ? `<span class="card-spec">📦 ${p.size}</span>` : ''}
+      <div class="card-price-row">
+        <div>
+          <div class="card-price">$${p.price.toFixed(2)}<span>${unitLabel}</span></div>
+          ${note ? `<div class="card-note">※ ${note}</div>` : ''}
+        </div>
+      </div>
+      <div class="card-actions" onclick="event.stopPropagation()">
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeCardQty('${p.id}', -${p.step})">−</button>
+          <input class="qty-val" id="qty_${p.id}" type="number"
+            value="${qty}" min="${p.min}" step="${p.step}"
+            style="width:40px">
+          <button class="qty-btn" onclick="changeCardQty('${p.id}', ${p.step})">＋</button>
+        </div>
+        <button class="add-btn${inCart ? ' added' : ''}" id="addbtn_${p.id}"
+          onclick="addToCart('${p.id}')">
+          ${inCart
+            ? (lang === 'ja' ? '✓ 追加済' : '✓ Added')
+            : (lang === 'ja' ? '🛒 カートへ' : '🛒 Add')}
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════════════
+// CART LOGIC
+// ══════════════════════════════════════════════════
+function changeCardQty(id, delta) {
+  const input = document.getElementById(`qty_${id}`);
+  if (!input) return;
+  const p = PRODUCTS.find(x => x.id === id);
+  let val = parseFloat(input.value) + delta;
+  val = Math.max(p.min, Math.round(val * 10) / 10);
+  input.value = val;
+  if (cart[id]) { cart[id].qty = val; updateCartUI(); }
+}
+
+function addToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  const input = document.getElementById(`qty_${id}`);
+  const qty = input ? parseFloat(input.value) : p.min;
+  cart[id] = { product: p, qty };
+  updateCartUI();
+  showToast(lang === 'ja' ? `🛒 カートに追加しました` : `🛒 Added to cart`);
+  // Refresh card
+  renderProducts();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  updateCartUI();
+  renderProducts();
+}
+
+function getCartTotal() {
+  return Object.values(cart).reduce((s, item) => s + item.product.price * item.qty, 0);
+}
+
+function getCartItemCount() {
+  return Object.values(cart).reduce((s, item) => s + item.qty, 0);
+}
+
+function updateCartUI() {
+  const total = getCartTotal();
+  const count = Object.keys(cart).length;
+  const qty = getCartItemCount();
+
+  // Header cart button
+  const cc = document.getElementById('cartCount');
+  cc.textContent = count;
+  cc.classList.toggle('show', count > 0);
+
+  // Cart total
+  document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+  document.getElementById('orderBtn').disabled = count === 0;
+
+  // Float bar
+  const fb = document.getElementById('floatBar');
+  fb.classList.toggle('show', count > 0);
+  document.getElementById('floatCount').textContent =
+    lang === 'ja' ? `${count}種類 / ${qty.toFixed(1)}点` : `${count} types / ${qty.toFixed(1)} items`;
+  document.getElementById('floatTotal').textContent = `$${total.toFixed(2)}`;
+}
+
+// ══════════════════════════════════════════════════
+// CART DRAWER
+// ══════════════════════════════════════════════════
+function openCart() {
+  renderCart();
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderCart() {
+  const items = Object.values(cart);
+  const wrap = document.getElementById('cartItems');
+  if (items.length === 0) {
+    wrap.innerHTML = `<div class="cart-empty">
+      <div class="cart-empty-icon">🛒</div>
+      <p>${lang === 'ja' ? 'カートは空です' : 'Your cart is empty'}</p>
+    </div>`;
+    return;
+  }
+  wrap.innerHTML = items.map(({ product: p, qty }) => {
+    const name = lang === 'ja' ? p.name_ja : p.name_en;
+    const subtotal = (p.price * qty).toFixed(2);
+    return `<div class="cart-item">
+      <div style="font-size:28px;line-height:1">${p.icon}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${name}</div>
+        <div class="cart-item-detail">${qty} ${p.unit} × $${p.price.toFixed(2)}</div>
+      </div>
+      <div>
+        <div class="cart-item-price">$${subtotal}</div>
+        <button class="cart-item-remove" onclick="removeFromCart('${p.id}');renderCart()">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════
+// TELEGRAM ORDER
+// ══════════════════════════════════════════════════
+function sendToTelegram() {
+  const items = Object.values(cart);
+  if (!items.length) return;
+  const total = getCartTotal();
+  const notes = document.getElementById('cartNotes').value;
+
+  let msg = lang === 'ja'
+    ? `📦 【注文】SAKANAYA JAPON\n\n`
+    : `📦 [ORDER] SAKANAYA JAPON\n\n`;
+
+  items.forEach(({ product: p, qty }) => {
+    const name = lang === 'ja' ? p.name_ja : p.name_en;
+    msg += `・${name}\n  ${qty} ${p.unit} × $${p.price.toFixed(2)} = $${(p.price * qty).toFixed(2)}\n`;
+  });
+
+  msg += `\n${'─'.repeat(28)}\n`;
+  msg += lang === 'ja'
+    ? `💴 合計: $${total.toFixed(2)}（配送料別）\n`
+    : `💴 Total: $${total.toFixed(2)} (excl. delivery)\n`;
+  if (notes) msg += lang === 'ja' ? `\n📝 備考: ${notes}` : `\n📝 Notes: ${notes}`;
+
+  const encoded = encodeURIComponent(msg);
+  const BOT = "SAKANAYAJAPON"; // ← Botのユーザーネームをここに設定
+  window.open(`https://t.me/${BOT}?text=${encoded}`, '_blank');
+}
+
+// ══════════════════════════════════════════════════
+// MODAL
+// ══════════════════════════════════════════════════
+function openModal(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  currentProduct = p;
+
+  document.getElementById('modalOrigin').textContent = p.origin;
+  document.getElementById('modalName').textContent = lang === 'ja' ? p.name_ja : p.name_en;
+  document.getElementById('modalNameEn').textContent = lang === 'ja' ? p.name_en : p.name_ja;
+  document.getElementById('modalDesc').textContent = lang === 'ja' ? p.desc_ja : p.desc_en;
+
+  // Specs
+  const specs = [
+    { label: lang === 'ja' ? 'サイズ/規格' : 'Size/Spec', value: p.size || '—' },
+    { label: lang === 'ja' ? '単位' : 'Unit', value: p.unit },
+    { label: lang === 'ja' ? '最低注文' : 'Min Order', value: `${p.min} ${p.unit}` },
+    { label: lang === 'ja' ? '注文刻み' : 'Step', value: `${p.step} ${p.unit}` },
+  ];
+  document.getElementById('modalSpecs').innerHTML = specs.map(s =>
+    `<div class="modal-spec-item">
+      <div class="modal-spec-label">${s.label}</div>
+      <div class="modal-spec-value">${s.value}</div>
+    </div>`).join('');
+
+  // Price
+  document.getElementById('modalPriceLabel').textContent =
+    lang === 'ja' ? '販売価格（輸送費込み）' : 'Selling Price (incl. freight)';
+  document.getElementById('modalPrice').innerHTML =
+    `$${p.price.toFixed(2)}<span> /${p.unit}</span>`;
+  const note = lang === 'ja' ? p.note_ja : p.note_en;
+  document.getElementById('modalNoteText').textContent = note ? `※ ${note}` : '';
+
+  // Qty
+  const qtyInput = document.getElementById('modalQtyVal');
+  qtyInput.value = cart[p.id] ? cart[p.id].qty : p.min;
+  qtyInput.min = p.min;
+  qtyInput.step = p.step;
+  document.getElementById('modalUnit').textContent = p.unit;
+
+  // Image
+  if (p.image_url) {
+    document.getElementById('modalImg').src = p.image_url;
+    document.getElementById('modalImg').classList.remove('hidden');
+    document.getElementById('modalImgPlaceholder').classList.add('hidden');
+  } else {
+    document.getElementById('modalImgPlaceholder').textContent = p.icon;
+    document.getElementById('modalImgPlaceholder').classList.remove('hidden');
+    document.getElementById('modalImg').classList.add('hidden');
+  }
+
+  document.getElementById('modalAddBtn').querySelector('[data-ja]').textContent =
+    lang === 'ja' ? '🛒 カートに追加' : '🛒 Add to Cart';
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function modalQtyChange(delta) {
+  if (!currentProduct) return;
+  const input = document.getElementById('modalQtyVal');
+  let val = parseFloat(input.value) + (delta * currentProduct.step);
+  val = Math.max(currentProduct.min, Math.round(val * 10) / 10);
+  input.value = val;
+}
+
+function addFromModal() {
+  if (!currentProduct) return;
+  const qty = parseFloat(document.getElementById('modalQtyVal').value);
+  cart[currentProduct.id] = { product: currentProduct, qty };
+  updateCartUI();
+  showToast(lang === 'ja' ? `🛒 カートに追加しました` : `🛒 Added to cart`);
+  closeModalDirect();
+  renderProducts();
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ══════════════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ══════════════════════════════════════════════════
+// SEARCH
+// ══════════════════════════════════════════════════
+document.getElementById('searchInput').addEventListener('input', e => {
+  searchQuery = e.target.value;
+  renderProducts();
+});
+
+// ══════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════
+renderCategoryTabs();
+renderProducts();
+updateCartUI();
+</script>
+</body>
+</html>
