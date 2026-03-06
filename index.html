@@ -6,210 +6,11 @@
 <title>SAKANAYA JAPON — Product List</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --navy:    #0e1f38;
-  --ocean:   #1a4a6b;
-  --teal:    #0a7d8c;
-  --gold:    #c8962a;
-  --gold-lt: #e8b84b;
-  --cream:   #f7f3ec;
-  --white:   #ffffff;
-  --gray:    #8a8a8a;
-  --light:   #f0ede7;
-  --dark:    #1a1a1a;
-  --red:     #c0392b;
-  --shadow:  0 4px 24px rgba(14,31,56,0.13);
-  --radius:  12px;
-  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-html { scroll-behavior: smooth; }
-body { font-family: 'Noto Sans JP', sans-serif; background: var(--cream); color: var(--dark); min-height: 100vh; overflow-x: hidden; }
-
-/* Header */
-header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
-.header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 64px; }
-.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-icon { font-size: 28px; filter: drop-shadow(0 0 8px rgba(200,150,42,0.5)); }
-.logo-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); letter-spacing: 0.08em; }
-.logo-sub { font-size: 9px; font-weight: 300; color: var(--gold-lt); letter-spacing: 0.2em; display: block; text-transform: uppercase; }
-.header-right { display: flex; align-items: center; gap: 16px; }
-.lang-toggle { display: flex; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; overflow: hidden; }
-.lang-btn { background: none; border: none; cursor: pointer; padding: 5px 12px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.5); transition: var(--transition); font-family: 'Noto Sans JP', sans-serif; }
-.lang-btn.active { background: var(--gold); color: var(--navy); font-weight: 700; }
-.cart-btn { position: relative; background: var(--gold); border: none; border-radius: 24px; cursor: pointer; padding: 8px 18px; display: flex; align-items: center; gap: 8px; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); transition: var(--transition); }
-.cart-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
-.cart-count { background: var(--red); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 11px; font-weight: 700; display: none; align-items: center; justify-content: center; }
-.cart-count.show { display: flex; }
-
-/* Hero */
-.hero { background: linear-gradient(135deg, var(--navy) 0%, var(--ocean) 60%, var(--teal) 100%); padding: 40px 20px 30px; position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
-.hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
-.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,5vw,48px); font-weight: 600; color: var(--white); letter-spacing: 0.05em; margin-bottom: 6px; }
-.hero-title span { color: var(--gold-lt); }
-.hero-sub { font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }
-.hero-notice { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-left: 3px solid var(--gold); border-radius: 8px; padding: 14px 18px; max-width: 720px; }
-.hero-notice p { font-size: 12px; line-height: 1.8; color: rgba(255,255,255,0.75); }
-.hero-notice p + p { margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
-.hero-notice a { color: var(--gold-lt); }
-.notice-label { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; display: block; margin-bottom: 4px; }
-
-/* Controls */
-.controls { background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.08); position: sticky; top: 64px; z-index: 90; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
-.controls-inner { max-width: 1200px; margin: 0 auto; padding: 12px 20px; }
-.cat-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; margin-bottom: 10px; }
-.cat-tabs::-webkit-scrollbar { display: none; }
-.cat-tab { background: none; border: 1.5px solid rgba(0,0,0,0.12); border-radius: 20px; cursor: pointer; padding: 6px 14px; white-space: nowrap; font-family: 'Noto Sans JP', sans-serif; font-size: 12px; font-weight: 500; color: var(--gray); transition: var(--transition); display: flex; align-items: center; gap: 5px; }
-.cat-tab:hover { border-color: var(--teal); color: var(--teal); }
-.cat-tab.active { background: var(--navy); border-color: var(--navy); color: var(--white); font-weight: 700; }
-.search-row { display: flex; gap: 10px; align-items: center; }
-.search-wrap { flex: 1; position: relative; max-width: 400px; }
-.search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--gray); }
-.search-input { width: 100%; border: 1.5px solid rgba(0,0,0,0.12); border-radius: 24px; padding: 8px 16px 8px 38px; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; color: var(--dark); background: var(--light); outline: none; transition: var(--transition); }
-.search-input:focus { border-color: var(--teal); background: var(--white); box-shadow: 0 0 0 3px rgba(10,125,140,0.1); }
-.result-count { font-size: 12px; color: var(--gray); white-space: nowrap; }
-
-/* Loading */
-.loading-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; gap: 16px; }
-.spinner { width: 40px; height: 40px; border: 3px solid var(--light); border-top-color: var(--teal); border-radius: 50%; animation: spin 0.8s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.loading-txt { font-size: 13px; color: var(--gray); }
-
-/* Error */
-.error-wrap { background: #fff3f3; border: 1px solid #fcc; border-radius: 12px; padding: 24px; margin: 24px; text-align: center; }
-.error-icon { font-size: 36px; margin-bottom: 8px; }
-.error-msg { font-size: 14px; color: var(--red); margin-bottom: 16px; }
-.retry-btn { background: var(--navy); color: white; border: none; border-radius: 8px; padding: 10px 24px; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; font-weight: 700; }
-
-/* Main */
-.main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 120px; }
-.cat-section { margin-bottom: 40px; }
-.cat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--navy); }
-.cat-header-icon { font-size: 22px; }
-.cat-header-name { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 700; color: var(--navy); }
-.cat-header-en { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--gray); font-style: italic; }
-.cat-count { margin-left: auto; font-size: 12px; color: var(--gray); background: var(--light); padding: 2px 10px; border-radius: 10px; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
-
-/* Product Card */
-.product-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: var(--transition); cursor: pointer; border: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; }
-.product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(14,31,56,0.18); }
-.product-card.featured { border: 2px solid var(--gold); }
-.card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-.card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--light), #dde8f0); display: flex; align-items: center; justify-content: center; font-size: 48px; opacity: 0.4; }
-.card-badge { position: absolute; top: 10px; left: 10px; background: var(--gold); color: var(--navy); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-.card-img-wrap { position: relative; }
-.card-body { padding: 14px; flex: 1; display: flex; flex-direction: column; }
-.card-origin { font-size: 10px; color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; font-weight: 500; }
-.card-name { font-family: 'Shippori Mincho', serif; font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 2px; }
-.card-name-en { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: var(--gray); font-style: italic; margin-bottom: 6px; }
-.card-desc { font-size: 11px; color: var(--gray); line-height: 1.6; margin-bottom: 8px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.card-spec { font-size: 11px; color: var(--gray); background: var(--light); padding: 4px 8px; border-radius: 4px; margin-bottom: 10px; display: inline-block; }
-.card-price-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 10px; }
-.card-price { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--navy); }
-.card-price span { font-size: 13px; color: var(--gray); }
-.card-price-na { font-size: 12px; color: var(--gray); font-style: italic; margin-bottom: 10px; }
-.card-note { font-size: 10px; color: var(--red); }
-.card-actions { display: flex; align-items: center; gap: 8px; }
-.qty-ctrl { display: flex; align-items: center; border: 1.5px solid rgba(0,0,0,0.12); border-radius: 20px; overflow: hidden; }
-.qty-btn { background: none; border: none; cursor: pointer; width: 28px; height: 28px; font-size: 16px; font-weight: 700; color: var(--navy); transition: var(--transition); display: flex; align-items: center; justify-content: center; }
-.qty-btn:hover { background: var(--light); }
-.qty-val { width: 36px; text-align: center; font-size: 13px; font-weight: 700; color: var(--navy); border: none; background: none; outline: none; font-family: 'Noto Sans JP', sans-serif; }
-.add-btn { flex: 1; background: var(--navy); color: var(--white); border: none; border-radius: 20px; cursor: pointer; padding: 8px 0; font-size: 12px; font-weight: 700; font-family: 'Noto Sans JP', sans-serif; transition: var(--transition); }
-.add-btn:hover { background: var(--teal); }
-.add-btn.added { background: var(--teal); }
-.inquiry-btn { width: 100%; background: none; border: 1.5px solid var(--teal); color: var(--teal); border-radius: 20px; cursor: pointer; padding: 7px 0; font-size: 12px; font-weight: 700; font-family: 'Noto Sans JP', sans-serif; transition: var(--transition); }
-.inquiry-btn:hover { background: var(--teal); color: white; }
-
-/* Cart Drawer */
-.cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; opacity: 0; pointer-events: none; transition: opacity var(--transition); }
-.cart-overlay.open { opacity: 1; pointer-events: all; }
-.cart-drawer { position: fixed; right: 0; top: 0; bottom: 0; width: min(480px,100vw); background: var(--white); z-index: 201; display: flex; flex-direction: column; transform: translateX(100%); transition: transform var(--transition); box-shadow: -8px 0 40px rgba(0,0,0,0.2); }
-.cart-drawer.open { transform: translateX(0); }
-.cart-header { background: var(--navy); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
-.cart-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); }
-.cart-close { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.7); font-size: 24px; }
-.cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
-.cart-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px; color: var(--gray); font-size: 14px; gap: 12px; }
-.cart-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--light); }
-.cart-item-info { flex: 1; }
-.cart-item-name { font-family: 'Shippori Mincho', serif; font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 3px; }
-.cart-item-detail { font-size: 11px; color: var(--gray); }
-.cart-item-price { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; color: var(--navy); white-space: nowrap; }
-.cart-item-remove { background: none; border: none; cursor: pointer; color: var(--gray); font-size: 18px; padding: 0 4px; transition: var(--transition); }
-.cart-item-remove:hover { color: var(--red); }
-.cart-notes { padding: 16px 24px; border-top: 1px solid var(--light); }
-.notes-label { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 6px; display: block; }
-.notes-input { width: 100%; border: 1.5px solid rgba(0,0,0,0.12); border-radius: 8px; padding: 10px 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 12px; color: var(--dark); resize: vertical; min-height: 60px; outline: none; }
-.notes-input:focus { border-color: var(--teal); }
-.cart-footer { padding: 16px 24px; border-top: 2px solid var(--light); }
-.cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-.cart-total-label { font-size: 13px; color: var(--gray); }
-.cart-total-amount { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--navy); }
-.cart-excl { font-size: 10px; color: var(--gray); margin-bottom: 14px; }
-.order-btn { width: 100%; background: var(--teal); color: var(--white); border: none; border-radius: 12px; cursor: pointer; padding: 16px; font-size: 15px; font-weight: 700; font-family: 'Noto Sans JP', sans-serif; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
-.order-btn:hover { background: var(--ocean); }
-.order-btn:disabled { background: var(--gray); cursor: not-allowed; }
-
-/* Float Bar */
-.float-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy); padding: 12px 20px; display: none; align-items: center; justify-content: space-between; z-index: 150; box-shadow: 0 -4px 20px rgba(0,0,0,0.3); }
-.float-bar.show { display: flex; }
-.float-bar-info { color: var(--white); }
-.float-bar-count { font-size: 12px; color: rgba(255,255,255,0.6); }
-.float-bar-total { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold-lt); }
-.float-bar-btn { background: var(--gold); color: var(--navy); border: none; border-radius: 24px; cursor: pointer; padding: 10px 20px; font-size: 13px; font-weight: 700; font-family: 'Noto Sans JP', sans-serif; }
-
-/* Modal */
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 300; opacity: 0; pointer-events: none; transition: opacity var(--transition); display: flex; align-items: center; justify-content: center; padding: 20px; }
-.modal-overlay.open { opacity: 1; pointer-events: all; }
-.modal { background: var(--white); border-radius: 16px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; transform: scale(0.95) translateY(10px); transition: transform var(--transition); box-shadow: 0 24px 80px rgba(0,0,0,0.3); }
-.modal-overlay.open .modal { transform: scale(1) translateY(0); }
-.modal-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 16px 16px 0 0; }
-.modal-img-placeholder { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, var(--light), #dde8f0); border-radius: 16px 16px 0 0; display: flex; align-items: center; justify-content: center; font-size: 72px; opacity: 0.3; }
-.modal-body { padding: 24px; }
-.modal-origin { font-size: 11px; color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-.modal-name { font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-.modal-name-en { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--gray); font-style: italic; margin-bottom: 16px; }
-.modal-desc { font-size: 13px; line-height: 1.8; color: #444; margin-bottom: 16px; }
-.modal-spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
-.modal-spec-item { background: var(--light); border-radius: 8px; padding: 10px 12px; }
-.modal-spec-label { font-size: 10px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
-.modal-spec-value { font-size: 14px; font-weight: 700; color: var(--navy); }
-.modal-price-section { background: var(--navy); border-radius: 12px; padding: 18px; margin-bottom: 20px; }
-.modal-price-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
-.modal-price { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--gold-lt); }
-.modal-price span { font-size: 16px; color: rgba(255,255,255,0.6); }
-.modal-note-text { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 6px; }
-.modal-qty-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.modal-qty-label { font-size: 13px; font-weight: 700; color: var(--navy); }
-.modal-qty-ctrl { display: flex; align-items: center; border: 2px solid var(--navy); border-radius: 24px; overflow: hidden; }
-.modal-qty-btn { background: none; border: none; cursor: pointer; width: 36px; height: 36px; font-size: 20px; font-weight: 700; color: var(--navy); display: flex; align-items: center; justify-content: center; }
-.modal-qty-btn:hover { background: var(--light); }
-.modal-qty-val { width: 48px; text-align: center; font-size: 16px; font-weight: 700; color: var(--navy); border: none; background: none; outline: none; font-family: 'Noto Sans JP', sans-serif; }
-.modal-add-btn { width: 100%; background: var(--navy); color: var(--white); border: none; border-radius: 12px; cursor: pointer; padding: 14px; font-size: 14px; font-weight: 700; font-family: 'Noto Sans JP', sans-serif; transition: var(--transition); }
-.modal-add-btn:hover { background: var(--teal); }
-.modal-close { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; color: white; font-size: 18px; display: flex; align-items: center; justify-content: center; }
-.modal-img-wrap { position: relative; }
-
-/* Toast */
-.toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--teal); color: white; padding: 10px 20px; border-radius: 24px; font-size: 13px; font-weight: 700; z-index: 400; opacity: 0; transition: all 0.3s; pointer-events: none; white-space: nowrap; }
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-/* Responsive */
-@media (max-width: 640px) {
-  .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-  .main { padding: 16px 14px 100px; }
-  .float-bar { display: flex; }
-  .cart-btn { display: none; }
-}
-@media (min-width: 641px) { .float-bar { display: none !important; } }
-.hidden { display: none !important; }
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- ── Header ── -->
 <header>
   <div class="header-inner">
     <a class="logo" href="#">
@@ -232,6 +33,7 @@ header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-sh
   </div>
 </header>
 
+<!-- ── Hero ── -->
 <div class="hero">
   <div class="hero-inner">
     <h1 class="hero-title"><span>SAKANAYA</span> JAPON</h1>
@@ -247,7 +49,7 @@ header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-sh
       <p id="noticeEN" class="hidden">
         <span class="notice-label">EN NOTICE</span>
         · For local fresh fish, the price shown per kg is for fillet.<br>
-        · Due to supply conditions, available products may vary. We apologize for any inconvenience.<br>
+        · Due to supply conditions, available products may vary.<br>
         · Imported items not listed are available on <a href="https://t.me/+9MZ3SB5xav42YjZl" target="_blank">OFFICIAL TELEGRAM</a>.<br>
         · Simulate the total and order via Telegram. Delivery fee not included.
       </p>
@@ -255,12 +57,15 @@ header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-sh
   </div>
 </div>
 
+<!-- ── Controls ── -->
 <div class="controls">
   <div class="controls-inner">
     <div class="cat-tabs" id="catTabs"></div>
     <div class="search-row">
       <div class="search-wrap">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
         <input class="search-input" id="searchInput" type="text"
           data-placeholder-ja="商品名・産地で検索..."
           data-placeholder-en="Search product or origin..."
@@ -271,13 +76,10 @@ header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-sh
   </div>
 </div>
 
-<main class="main" id="productList">
-  <div class="loading-wrap" id="loadingWrap">
-    <div class="spinner"></div>
-    <p class="loading-txt" data-ja="商品データを読み込み中..." data-en="Loading products...">商品データを読み込み中...</p>
-  </div>
-</main>
+<!-- ── Main ── -->
+<main class="main" id="productList"></main>
 
+<!-- ── Float Bar（スマホ用） ── -->
 <div class="float-bar" id="floatBar" onclick="openCart()">
   <div class="float-bar-info">
     <div class="float-bar-count" id="floatCount"></div>
@@ -286,6 +88,7 @@ header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-sh
   <button class="float-bar-btn" data-ja="カートを見る" data-en="View Cart">カートを見る</button>
 </div>
 
+<!-- ── Cart Overlay & Drawer ── -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-header">
@@ -305,7 +108,9 @@ header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-sh
       <span class="cart-total-label" data-ja="合計金額" data-en="Total">合計金額</span>
       <span class="cart-total-amount" id="cartTotal">$0.00</span>
     </div>
-    <p class="cart-excl" data-ja="※ 配送料は別途となります" data-en="* Delivery fee not included">※ 配送料は別途となります</p>
+    <p class="cart-excl" data-ja="※ 配送料は別途となります" data-en="* Delivery fee not included">
+      ※ 配送料は別途となります
+    </p>
     <button class="order-btn" id="orderBtn" onclick="sendToTelegram()" disabled>
       <span>✈️</span>
       <span data-ja="Telegramで注文する" data-en="Order via Telegram">Telegramで注文する</span>
@@ -313,6 +118,7 @@ header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-sh
   </div>
 </div>
 
+<!-- ── Modal ── -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <div class="modal-img-wrap">
@@ -321,547 +127,40 @@ header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-sh
       <button class="modal-close" onclick="closeModalDirect()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-origin" id="modalOrigin"></div>
-      <div class="modal-name" id="modalName"></div>
+      <div class="modal-origin"  id="modalOrigin"></div>
+      <div class="modal-name"    id="modalName"></div>
       <div class="modal-name-en" id="modalNameEn"></div>
-      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-desc"    id="modalDesc"></div>
       <div class="modal-spec-grid" id="modalSpecs"></div>
       <div class="modal-price-section">
         <div class="modal-price-label" id="modalPriceLabel"></div>
-        <div class="modal-price" id="modalPrice"></div>
-        <div class="modal-note-text" id="modalNoteText"></div>
+        <div class="modal-price"       id="modalPrice"></div>
+        <div class="modal-note-text"   id="modalNoteText"></div>
       </div>
       <div class="modal-qty-row" id="modalQtyRow">
         <span class="modal-qty-label" data-ja="数量:" data-en="Qty:">数量:</span>
         <div class="modal-qty-ctrl">
           <button class="modal-qty-btn" onclick="modalQtyChange(-1)">−</button>
-          <input class="modal-qty-val" id="modalQtyVal" type="number" value="1" min="0.5" step="0.5">
+          <input  class="modal-qty-val" id="modalQtyVal" type="number" value="1" min="0.5" step="0.5">
           <button class="modal-qty-btn" onclick="modalQtyChange(1)">＋</button>
         </div>
         <span id="modalUnit" style="font-size:12px;color:var(--gray)"></span>
       </div>
-      <button class="modal-add-btn" id="modalAddBtn" onclick="addFromModal()">
-        <span data-ja="🛒 カートに追加" data-en="🛒 Add to Cart">🛒 カートに追加</span>
-      </button>
+      <button class="modal-add-btn" id="modalAddBtn">🛒 カートに追加</button>
     </div>
   </div>
 </div>
 
+<!-- ── Toast ── -->
 <div class="toast" id="toast"></div>
 
-<script>
-// ══════════════════════════════════════════════════
-// CONFIG — ここを設定してください
-// ══════════════════════════════════════════════════
-const API_URL     = "https://script.google.com/macros/s/AKfycbw7pWe_w-vxUKrsMTXpLMfRZwrrjqoxVbeZDRO-QSDDTlnghdES0Lu8d4pnI7E7hNCw/exec"; // ← GASデプロイURLを入力
-const TELEGRAM_BOT = "sakanaya_bot";             // ← BotのusernameをBot Tokenで設定不要、usernameのみ
+<!-- ── Scripts（順番通りに読み込む） ── -->
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
 
-// カテゴリー設定（GASから取得した category_ja と一致させる）
-const CATEGORIES = [
-  { id: "all",              icon: "🌊", label_ja: "すべて",        label_en: "All" },
-  { id: "本日のおすすめ",   icon: "⭐", label_ja: "本日のおすすめ", label_en: "Today's Special" },
-  { id: "マグロ",           icon: "🐟", label_ja: "マグロ",         label_en: "Tuna" },
-  { id: "雲丹",             icon: "🦔", label_ja: "雲丹",           label_en: "Sea Urchin" },
-  { id: "養殖",             icon: "🐠", label_ja: "養殖",           label_en: "Farmed" },
-  { id: "魚介類",           icon: "🦞", label_ja: "魚介類",          label_en: "Seafood" },
-  { id: "牡蠣",             icon: "🦪", label_ja: "牡蠣",           label_en: "Oyster" },
-  { id: "冷凍品",           icon: "❄️", label_ja: "冷凍品",         label_en: "Frozen" },
-];
-
-const CAT_ICONS = Object.fromEntries(CATEGORIES.map(c => [c.id, c.icon]));
-
-// ══════════════════════════════════════════════════
-// STATE
-// ══════════════════════════════════════════════════
-let lang         = 'ja';
-let currentCat   = 'all';
-let searchQuery  = '';
-let cart         = {};
-let currentProduct = null;
-let allProducts  = [];   // GASから取得した全商品
-let isLoading    = false;
-
-// ══════════════════════════════════════════════════
-// API — GASから商品データ取得
-// ══════════════════════════════════════════════════
-async function fetchProducts() {
-  if (isLoading) return;
-  isLoading = true;
-  showLoading(true);
-
-  try {
-    const url = `${API_URL}?action=products`;
-    const res  = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-
-    if (data.error) throw new Error(data.error);
-
-    // GASのフィールド名をフロントエンド形式にマッピング
-    allProducts = (data.products || []).map(p => ({
-      id:         p.id,
-      category:   p.category_ja,   // カテゴリーIDとして使用
-      category_ja: p.category_ja,
-      category_en: p.category_en,
-      name_ja:    p.name_ja,
-      name_en:    p.name_en,
-      origin:     p.origin,
-      size:       p.size,
-      desc_ja:    p.desc_ja || "",
-      desc_en:    p.desc_en || "",
-      price:      p.price_usd,     // null の場合は要問合せ
-      unit:       p.unit || "kg",
-      min:        p.min_order || 1,
-      step:       p.step || 0.5,
-      featured:   p.featured,
-      note_ja:    p.stock_note_ja || "",
-      note_en:    p.stock_note_en || "",
-      image_url:  p.image_url || "",
-      icon:       CAT_ICONS[p.category_ja] || "🐟",
-    }));
-
-    // おすすめカテゴリーを featuredフラグから生成
-    const featuredItems = allProducts.filter(p => p.featured);
-    featuredItems.forEach(p => {
-      // featuredカテゴリーとして複製（元も残す）
-      if (!allProducts.find(x => x.id === p.id + "_feat")) {
-        allProducts.push({ ...p, id: p.id + "_feat", category: "本日のおすすめ" });
-      }
-    });
-
-    showLoading(false);
-    renderCategoryTabs();
-    renderProducts();
-
-  } catch (err) {
-    console.warn("API取得失敗、サンプルデータを使用:", err.message);
-    // フォールバック: サンプルデータを使用
-    allProducts = SAMPLE_PRODUCTS;
-    showLoading(false);
-    renderCategoryTabs();
-    renderProducts();
-    showToast(lang === 'ja' ? "⚠️ オフラインモード" : "⚠️ Offline mode");
-  } finally {
-    isLoading = false;
-  }
-}
-
-function showLoading(show) {
-  const wrap = document.getElementById('loadingWrap');
-  if (wrap) wrap.style.display = show ? 'flex' : 'none';
-}
-
-// ══════════════════════════════════════════════════
-// FALLBACK SAMPLE DATA（GAS未接続時のデモ用）
-// ══════════════════════════════════════════════════
-const SAMPLE_PRODUCTS = [
-  { id:"s1", category:"マグロ", name_ja:"愛媛県産養殖生本まぐろ 腹上 UA（大トロ）", name_en:"Farmed Bluefin Tuna - Otoro UA", origin:"愛媛 / Ehime", size:"70kgサイズ", desc_ja:"最高級大トロ。とろける脂が絶品。", desc_en:"Premium otoro. Melts in your mouth.", price:102.86, unit:"kg", min:0.5, step:0.5, featured:true, note_ja:"3kg以下カット+$5", note_en:"Cut +$5 for under 3kg", icon:"🐟", image_url:"" },
-  { id:"s2", category:"マグロ", name_ja:"愛媛県産養殖生本まぐろ 背中 MB", name_en:"Farmed Bluefin Tuna - Middle Back MB", origin:"愛媛 / Ehime", size:"70kgサイズ", desc_ja:"背中部位。バランスの良い赤身と脂。", desc_en:"Middle back. Balanced lean and fat.", price:86.36, unit:"kg", min:0.5, step:0.5, featured:false, note_ja:"", note_en:"", icon:"🐟", image_url:"" },
-  { id:"s3", category:"雲丹", name_ja:"雲丹 倖永（ロシア）", name_en:"Uni - Kouei / Russia", origin:"ロシア / Russia", size:"250g / pack", desc_ja:"倖永ブランドのロシア産雲丹。濃厚な甘み。", desc_en:"Kouei brand Russian uni. Rich sweetness.", price:168.14, unit:"pack", min:1, step:1, featured:true, note_ja:"仕入状況により変動", note_en:"Subject to supply", icon:"🦔", image_url:"" },
-  { id:"s4", category:"養殖", name_ja:"朝〆養殖たい（愛媛）", name_en:"Farmed Sea Bream Morning Kill (Ehime)", origin:"愛媛 / Ehime", size:"1.5kg前後", desc_ja:"愛媛産の養殖真鯛。朝〆で新鮮。", desc_en:"Farmed sea bream from Ehime. Morning-killed.", price:31.70, unit:"kg", min:0.5, step:0.5, featured:false, note_ja:"朝〆", note_en:"Morning Kill", icon:"🐡", image_url:"" },
-  { id:"s5", category:"冷凍品", name_ja:"冷凍ボタンエビ（ロシア）", name_en:"Frozen Botan Shrimp (Russia)", origin:"ロシア / Russia", size:"0.5kg / 11-13尾", desc_ja:"ロシア産冷凍ボタンエビ。甘みと濃厚な旨み。", desc_en:"Frozen spot prawn from Russia. Sweet and rich.", price:53.73, unit:"pack", min:1, step:1, featured:false, note_ja:"11-13尾入", note_en:"11-13 pcs", icon:"🦐", image_url:"" },
-  { id:"s6", category:"魚介類", name_ja:"あん肝（北海道噴火湾）", name_en:"Monkfish Liver (Hokkaido)", origin:"北海道 / Hokkaido", size:"1kg", desc_ja:"北海道噴火湾産。海のフォアグラ。", desc_en:"Hokkaido Funka Bay. Foie gras of the sea.", price:153.20, unit:"kg", min:0.5, step:0.5, featured:false, note_ja:"", note_en:"", icon:"🫁", image_url:"" },
-  { id:"s7", category:"牡蠣", name_ja:"カキ 広田湾 L", name_en:"Oyster Hirota Bay L", origin:"広田湾", size:"200/280g前後", desc_ja:"広田湾産の大粒牡蠣。濃厚な旨み。", desc_en:"Large oyster from Hirota Bay. Rich flavor.", price:9.30, unit:"pc", min:1, step:1, featured:false, note_ja:"", note_en:"", icon:"🦪", image_url:"" },
-  // featured copies
-  { id:"s1_feat", category:"本日のおすすめ", name_ja:"愛媛県産養殖生本まぐろ 腹上 UA（大トロ）", name_en:"Farmed Bluefin Tuna - Otoro UA", origin:"愛媛 / Ehime", size:"70kgサイズ", desc_ja:"最高級大トロ。とろける脂が絶品。", desc_en:"Premium otoro. Melts in your mouth.", price:102.86, unit:"kg", min:0.5, step:0.5, featured:true, note_ja:"3kg以下カット+$5", note_en:"Cut +$5 for under 3kg", icon:"🐟", image_url:"" },
-  { id:"s3_feat", category:"本日のおすすめ", name_ja:"雲丹 倖永（ロシア）", name_en:"Uni - Kouei / Russia", origin:"ロシア / Russia", size:"250g / pack", desc_ja:"倖永ブランドのロシア産雲丹。濃厚な甘み。", desc_en:"Kouei brand Russian uni. Rich sweetness.", price:168.14, unit:"pack", min:1, step:1, featured:true, note_ja:"仕入状況により変動", note_en:"Subject to supply", icon:"🦔", image_url:"" },
-];
-
-// ══════════════════════════════════════════════════
-// LANGUAGE
-// ══════════════════════════════════════════════════
-function setLang(l) {
-  lang = l;
-  document.getElementById('btnJA').classList.toggle('active', l === 'ja');
-  document.getElementById('btnEN').classList.toggle('active', l === 'en');
-  document.querySelectorAll('[data-ja]').forEach(el => {
-    el.textContent = l === 'ja' ? el.dataset.ja : el.dataset.en;
-  });
-  document.querySelectorAll('[data-placeholder-ja]').forEach(el => {
-    el.placeholder = l === 'ja' ? el.dataset.placeholderJa : el.dataset.placeholderEn;
-  });
-  document.getElementById('noticeJA').classList.toggle('hidden', l !== 'ja');
-  document.getElementById('noticeEN').classList.toggle('hidden', l !== 'en');
-  document.getElementById('loadingWrap') &&
-    document.getElementById('loadingWrap').querySelector('[data-ja]') &&
-    (document.getElementById('loadingWrap').querySelector('[data-ja]').textContent =
-      l === 'ja' ? '商品データを読み込み中...' : 'Loading products...');
-  renderCategoryTabs();
-  renderProducts();
-  renderCart();
-}
-
-// ══════════════════════════════════════════════════
-// CATEGORY TABS
-// ══════════════════════════════════════════════════
-function renderCategoryTabs() {
-  const wrap = document.getElementById('catTabs');
-  wrap.innerHTML = CATEGORIES.map(cat => {
-    const count = cat.id === 'all'
-      ? allProducts.filter(p => !p.id.endsWith('_feat') && p.category !== '本日のおすすめ').length
-      : allProducts.filter(p => p.category === cat.id).length;
-    if (cat.id !== 'all' && count === 0) return '';
-    const label = lang === 'ja' ? cat.label_ja : cat.label_en;
-    return `<button class="cat-tab${currentCat === cat.id ? ' active' : ''}"
-      onclick="selectCat('${cat.id}')">
-      <span>${cat.icon}</span>${label}
-      <span style="opacity:0.6;font-size:10px">(${count})</span>
-    </button>`;
-  }).join('');
-}
-
-function selectCat(id) {
-  currentCat = id;
-  renderCategoryTabs();
-  renderProducts();
-}
-
-// ══════════════════════════════════════════════════
-// RENDER PRODUCTS
-// ══════════════════════════════════════════════════
-function getFiltered() {
-  return allProducts.filter(p => {
-    const inCat = currentCat === 'all'
-      ? p.category !== '本日のおすすめ' && !p.id.endsWith('_feat')
-      : p.category === currentCat;
-    const q = searchQuery.toLowerCase();
-    const inSearch = !q ||
-      p.name_ja.toLowerCase().includes(q) ||
-      p.name_en.toLowerCase().includes(q) ||
-      (p.origin || '').toLowerCase().includes(q);
-    return inCat && inSearch;
-  });
-}
-
-function renderProducts() {
-  const filtered = getFiltered();
-  const main = document.getElementById('productList');
-
-  // Remove loading
-  const lw = document.getElementById('loadingWrap');
-  if (lw) lw.remove();
-
-  document.getElementById('resultCount').textContent =
-    lang === 'ja' ? `${filtered.length}件` : `${filtered.length} items`;
-
-  if (allProducts.length === 0) return; // まだ読み込み中
-
-  if (filtered.length === 0) {
-    main.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--gray)">
-      <div style="font-size:48px;margin-bottom:12px">🔍</div>
-      <p>${lang === 'ja' ? '該当する商品が見つかりませんでした' : 'No products found'}</p>
-    </div>`;
-    return;
-  }
-
-  const groups = currentCat !== 'all'
-    ? [{ cat: CATEGORIES.find(c => c.id === currentCat) || { icon:'🐟', label_ja: currentCat, label_en: currentCat }, products: filtered }]
-    : CATEGORIES.filter(c => c.id !== 'all').map(cat => ({
-        cat, products: filtered.filter(p => p.category === cat.id)
-      })).filter(g => g.products.length > 0);
-
-  main.innerHTML = groups.map(({ cat, products }) => `
-    <div class="cat-section">
-      <div class="cat-header">
-        <span class="cat-header-icon">${cat.icon}</span>
-        <span class="cat-header-name">${lang === 'ja' ? cat.label_ja : cat.label_en}</span>
-        <span class="cat-header-en" style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gray);font-style:italic">
-          ${lang === 'ja' ? cat.label_en : cat.label_ja}
-        </span>
-        <span class="cat-count">${products.length} ${lang === 'ja' ? '品' : 'items'}</span>
-      </div>
-      <div class="product-grid">
-        ${products.map(p => renderCard(p)).join('')}
-      </div>
-    </div>`).join('');
-}
-
-function renderCard(p) {
-  const inCart = cart[p.id];
-  const qty    = inCart ? inCart.qty : p.min;
-  const name   = lang === 'ja' ? p.name_ja : p.name_en;
-  const desc   = lang === 'ja' ? p.desc_ja : p.desc_en;
-  const note   = lang === 'ja' ? p.note_ja : p.note_en;
-  const unitLabel = p.unit === 'kg' ? '/kg' : `/${p.unit}`;
-  const hasPrice  = p.price != null && p.price > 0;
-
-  return `
-  <div class="product-card${p.featured ? ' featured' : ''}" onclick="openModal('${p.id}')">
-    <div class="card-img-wrap">
-      ${p.image_url
-        ? `<img class="card-img" src="${p.image_url}" alt="${name}" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-        : ''}
-      <div class="card-img-placeholder" style="${p.image_url ? 'display:none' : ''}">${p.icon || '🐟'}</div>
-      ${p.featured ? `<span class="card-badge">${lang==='ja'?'⭐ おすすめ':'⭐ Special'}</span>` : ''}
-    </div>
-    <div class="card-body">
-      <div class="card-origin">${p.origin || ''}</div>
-      <div class="card-name">${name}</div>
-      <div class="card-name-en">${lang === 'ja' ? p.name_en : p.name_ja}</div>
-      <div class="card-desc">${desc || ''}</div>
-      ${p.size ? `<span class="card-spec">📦 ${p.size}</span>` : ''}
-      ${hasPrice ? `
-        <div class="card-price-row">
-          <div>
-            <div class="card-price">$${p.price.toFixed(2)}<span>${unitLabel}</span></div>
-            ${note ? `<div class="card-note">※ ${note}</div>` : ''}
-          </div>
-        </div>
-        <div class="card-actions" onclick="event.stopPropagation()">
-          <div class="qty-ctrl">
-            <button class="qty-btn" onclick="changeCardQty('${p.id}',-${p.step})">−</button>
-            <input class="qty-val" id="qty_${p.id}" type="number" value="${qty}" min="${p.min}" step="${p.step}">
-            <button class="qty-btn" onclick="changeCardQty('${p.id}',${p.step})">＋</button>
-          </div>
-          <button class="add-btn${inCart?' added':''}" id="addbtn_${p.id}" onclick="addToCart('${p.id}')">
-            ${inCart ? (lang==='ja'?'✓ 追加済':'✓ Added') : (lang==='ja'?'🛒 カートへ':'🛒 Add')}
-          </button>
-        </div>
-      ` : `
-        <div class="card-price-na">${lang==='ja'?'価格はお問い合わせください':'Please inquire for price'}</div>
-        <button class="inquiry-btn" onclick="event.stopPropagation();inquireTelegram('${p.id}')">
-          ${lang==='ja'?'📱 Telegramで問い合わせ':'📱 Inquire via Telegram'}
-        </button>
-      `}
-    </div>
-  </div>`;
-}
-
-// ══════════════════════════════════════════════════
-// CART
-// ══════════════════════════════════════════════════
-function changeCardQty(id, delta) {
-  const input = document.getElementById(`qty_${id}`);
-  if (!input) return;
-  const p = allProducts.find(x => x.id === id);
-  if (!p) return;
-  let val = Math.round((parseFloat(input.value) + delta) * 10) / 10;
-  val = Math.max(p.min, val);
-  input.value = val;
-  if (cart[id]) { cart[id].qty = val; updateCartUI(); }
-}
-
-function addToCart(id) {
-  const p = allProducts.find(x => x.id === id);
-  if (!p || !p.price) return;
-  const input = document.getElementById(`qty_${id}`);
-  const qty   = input ? parseFloat(input.value) : p.min;
-  cart[id] = { product: p, qty };
-  updateCartUI();
-  showToast(lang === 'ja' ? `🛒 カートに追加しました` : `🛒 Added to cart`);
-  renderProducts();
-}
-
-function removeFromCart(id) {
-  delete cart[id];
-  updateCartUI();
-  renderProducts();
-  renderCart();
-}
-
-function getCartTotal() {
-  return Object.values(cart).reduce((s, i) => s + i.product.price * i.qty, 0);
-}
-
-function updateCartUI() {
-  const total = getCartTotal();
-  const count = Object.keys(cart).length;
-  const qty   = Object.values(cart).reduce((s, i) => s + i.qty, 0);
-  const cc = document.getElementById('cartCount');
-  cc.textContent = count;
-  cc.classList.toggle('show', count > 0);
-  document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
-  document.getElementById('orderBtn').disabled = count === 0;
-  const fb = document.getElementById('floatBar');
-  fb.classList.toggle('show', count > 0);
-  document.getElementById('floatCount').textContent =
-    lang === 'ja' ? `${count}種類 / ${qty.toFixed(1)}点` : `${count} items / ${qty.toFixed(1)} qty`;
-  document.getElementById('floatTotal').textContent = `$${total.toFixed(2)}`;
-}
-
-function openCart() {
-  renderCart();
-  document.getElementById('cartDrawer').classList.add('open');
-  document.getElementById('cartOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeCart() {
-  document.getElementById('cartDrawer').classList.remove('open');
-  document.getElementById('cartOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function renderCart() {
-  const items = Object.values(cart);
-  const wrap  = document.getElementById('cartItems');
-  if (!items.length) {
-    wrap.innerHTML = `<div class="cart-empty"><div style="font-size:48px;opacity:0.3">🛒</div>
-      <p>${lang==='ja'?'カートは空です':'Your cart is empty'}</p></div>`;
-    return;
-  }
-  wrap.innerHTML = items.map(({ product: p, qty }) => {
-    const name = lang === 'ja' ? p.name_ja : p.name_en;
-    return `<div class="cart-item">
-      <div style="font-size:26px">${p.icon||'🐟'}</div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${name}</div>
-        <div class="cart-item-detail">${qty} ${p.unit} × $${p.price.toFixed(2)}</div>
-      </div>
-      <div style="text-align:right">
-        <div class="cart-item-price">$${(p.price*qty).toFixed(2)}</div>
-        <button class="cart-item-remove" onclick="removeFromCart('${p.id}')">🗑</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-// ══════════════════════════════════════════════════
-// TELEGRAM
-// ══════════════════════════════════════════════════
-function sendToTelegram() {
-  const items = Object.values(cart);
-  if (!items.length) return;
-  const total = getCartTotal();
-  const notes = document.getElementById('cartNotes').value;
-
-  let msg = lang === 'ja'
-    ? `📦 【注文】SAKANAYA JAPON\n\n`
-    : `📦 [ORDER] SAKANAYA JAPON\n\n`;
-
-  items.forEach(({ product: p, qty }) => {
-    const name = lang === 'ja' ? p.name_ja : p.name_en;
-    msg += `・${name}\n  ${qty} ${p.unit} × $${p.price.toFixed(2)} = $${(p.price*qty).toFixed(2)}\n`;
-  });
-
-  msg += `\n${'─'.repeat(26)}\n`;
-  msg += lang === 'ja'
-    ? `💴 合計: $${total.toFixed(2)}（配送料別）\n`
-    : `💴 Total: $${total.toFixed(2)} (excl. delivery)\n`;
-  if (notes) msg += `\n📝 ${lang==='ja'?'備考':'Notes'}: ${notes}`;
-
-  window.open(`https://t.me/${TELEGRAM_BOT}?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-function inquireTelegram(id) {
-  const p = allProducts.find(x => x.id === id);
-  if (!p) return;
-  const name = lang === 'ja' ? p.name_ja : p.name_en;
-  const msg  = lang === 'ja'
-    ? `【価格問い合わせ】\n商品名: ${name}\n産地: ${p.origin}\n規格: ${p.size || '-'}\n\nよろしくお願いいたします。`
-    : `[Price Inquiry]\nProduct: ${name}\nOrigin: ${p.origin}\nSpec: ${p.size || '-'}\n\nThank you.`;
-  window.open(`https://t.me/${TELEGRAM_BOT}?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-// ══════════════════════════════════════════════════
-// MODAL
-// ══════════════════════════════════════════════════
-function openModal(id) {
-  const p = allProducts.find(x => x.id === id);
-  if (!p) return;
-  currentProduct = p;
-
-  document.getElementById('modalOrigin').textContent = p.origin || '';
-  document.getElementById('modalName').textContent   = lang==='ja' ? p.name_ja : p.name_en;
-  document.getElementById('modalNameEn').textContent = lang==='ja' ? p.name_en : p.name_ja;
-  document.getElementById('modalDesc').textContent   = lang==='ja' ? p.desc_ja : p.desc_en;
-
-  const specs = [
-    { label: lang==='ja'?'サイズ/規格':'Size/Spec', value: p.size || '—' },
-    { label: lang==='ja'?'単位':'Unit',         value: p.unit },
-    { label: lang==='ja'?'最低注文':'Min Order',  value: `${p.min} ${p.unit}` },
-    { label: lang==='ja'?'注文刻み':'Step',       value: `${p.step} ${p.unit}` },
-  ];
-  document.getElementById('modalSpecs').innerHTML = specs.map(s =>
-    `<div class="modal-spec-item">
-      <div class="modal-spec-label">${s.label}</div>
-      <div class="modal-spec-value">${s.value}</div>
-    </div>`).join('');
-
-  const hasPrice = p.price != null && p.price > 0;
-  document.getElementById('modalPriceLabel').textContent =
-    lang==='ja' ? '販売価格（輸送費込み）' : 'Selling Price (incl. freight)';
-  document.getElementById('modalPrice').innerHTML = hasPrice
-    ? `$${p.price.toFixed(2)}<span> /${p.unit}</span>`
-    : `<span style="font-size:16px">${lang==='ja'?'お問い合わせください':'Please inquire'}</span>`;
-  const note = lang==='ja' ? p.note_ja : p.note_en;
-  document.getElementById('modalNoteText').textContent = note ? `※ ${note}` : '';
-
-  document.getElementById('modalQtyRow').style.display = hasPrice ? 'flex' : 'none';
-  const addBtn = document.getElementById('modalAddBtn');
-  if (hasPrice) {
-    addBtn.style.display = 'block';
-    addBtn.querySelector('[data-ja]').textContent = lang==='ja' ? '🛒 カートに追加' : '🛒 Add to Cart';
-    addBtn.onclick = addFromModal;
-  } else {
-    addBtn.textContent = lang==='ja' ? '📱 Telegramで問い合わせ' : '📱 Inquire via Telegram';
-    addBtn.onclick = () => { inquireTelegram(id); closeModalDirect(); };
-  }
-
-  const qtyInput = document.getElementById('modalQtyVal');
-  qtyInput.value = cart[p.id] ? cart[p.id].qty : p.min;
-  qtyInput.min   = p.min;
-  qtyInput.step  = p.step;
-  document.getElementById('modalUnit').textContent = p.unit;
-
-  if (p.image_url) {
-    document.getElementById('modalImg').src = p.image_url;
-    document.getElementById('modalImg').classList.remove('hidden');
-    document.getElementById('modalImgPlaceholder').classList.add('hidden');
-  } else {
-    document.getElementById('modalImgPlaceholder').textContent = p.icon || '🐟';
-    document.getElementById('modalImgPlaceholder').classList.remove('hidden');
-    document.getElementById('modalImg').classList.add('hidden');
-  }
-
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function modalQtyChange(delta) {
-  if (!currentProduct) return;
-  const input = document.getElementById('modalQtyVal');
-  let val = Math.round((parseFloat(input.value) + delta * currentProduct.step) * 10) / 10;
-  val = Math.max(currentProduct.min, val);
-  input.value = val;
-}
-
-function addFromModal() {
-  if (!currentProduct || !currentProduct.price) return;
-  const qty = parseFloat(document.getElementById('modalQtyVal').value);
-  cart[currentProduct.id] = { product: currentProduct, qty };
-  updateCartUI();
-  showToast(lang==='ja' ? '🛒 カートに追加しました' : '🛒 Added to cart');
-  closeModalDirect();
-  renderProducts();
-}
-
-function closeModal(e) {
-  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
-}
-function closeModalDirect() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// ══════════════════════════════════════════════════
-// TOAST / SEARCH / INIT
-// ══════════════════════════════════════════════════
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
-}
-
-document.getElementById('searchInput').addEventListener('input', e => {
-  searchQuery = e.target.value;
-  renderProducts();
-});
-
-// ── 起動: GAS APIから取得 ─────────────────────────
-fetchProducts();
-</script>
 </body>
 </html>
